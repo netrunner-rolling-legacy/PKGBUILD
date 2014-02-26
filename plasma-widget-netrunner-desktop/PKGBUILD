@@ -1,5 +1,5 @@
 # Maintainer: Rohan Garg <rohan@kde.org>
-pkgname=netrunner-desktop
+pkgname=plasma-widget-netrunner-desktop
 pkgver=0+git20140225.f5efbb5
 pkgrel=1
 pkgdesc="plasma widget showing the content of a folder"
