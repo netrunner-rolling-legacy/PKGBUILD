@@ -1,0 +1,30 @@
+# Maintainer: Rohan Garg <rohan@kde.org>
+pkgname=netrunner-desktop
+pkgver=0+git20140225.f5efbb5
+pkgrel=1
+pkgdesc="plasma widget showing the content of a folder"
+arch=('i686' 'x86_64')
+url='https://github.com/blue-shell/folderview'
+license=('GPL3')
+groups=('kde')
+depends=('kdelibs' 'nepomuk-core' 'nepomuk-widgets' 'kactivities' 'kdebase-runtime')
+makedepends=('cmake' 'automoc4' 'git')
+source=('git://github.com/blue-shell/folderview.git#branch=netrunner/netrunner-desktop-4.11')
+md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/folderview"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $srcdir/folderview
+  rm -rf build && mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  make -j8
+}
+
+package() {
+  cd $srcdir/folderview/build/plasma/applets/folderview
+  make DESTDIR=$pkgdir install
+}

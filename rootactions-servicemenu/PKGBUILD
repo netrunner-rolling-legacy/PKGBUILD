@@ -1,0 +1,23 @@
+# Maintainer: Rohan Garg <rohan@kde.org>
+pkgname=rootactions-servicemenu
+pkgver=0
+pkgrel=1
+pkgdesc="Root actions service menu in dolphin and konquor for Linux Mint KDE Edition"
+arch=('any')
+url='https://github.com/blue-shell/folderview'
+license=('GPL3')
+groups=('kde')
+depends=('kdebase-runtime')
+makedepends=('git')
+source=('git+https://github.com/netrunner/rootactions-servicemenu.git')
+md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/rootactions-servicemenu"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd $srcdir/rootactions-servicemenu
+  cp -aR usr $pkgdir
+}
