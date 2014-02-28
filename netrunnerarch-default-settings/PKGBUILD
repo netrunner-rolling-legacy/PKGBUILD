@@ -1,0 +1,25 @@
+# Maintainer: Rohan Garg <rohan@kde.org>
+pkgname=netrunnerarch-default-settings
+pkgver=0+git20140228.0192ec3
+pkgrel=1
+pkgdesc="Default KDE settings for Netrunner"
+arch=('any')
+url='https://github.com/netrunnerarch/netrunnerarch-default-settings'
+license=('GPL')
+groups=('kde')
+depends=()
+makedepends=()
+source=('git://github.com/netrunnerarch/netrunnerarch-default-settings.git')
+md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/netrunnerarch-default-settings"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+  cd $srcdir/netrunnerarch-default-settings 
+  cp -aR usr $pkgdir/
+  cp -aR etc $pkgdir/
+}
