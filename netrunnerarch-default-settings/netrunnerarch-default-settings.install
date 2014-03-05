@@ -1,4 +1,4 @@
-pre_install() {
+post_install() {
    # ####################################################### #
    # Diversion of default.pa pulseaudio configuration file 
    #
@@ -12,6 +12,7 @@ pre_install() {
    if [ -e /etc/pulse/default.pa ]; then
     mv /etc/pulse/default.pa{,.pacorig}
    fi
+   cp /usr/share/netrunner-default-settings/default.pa /etc/pulse/default.pa
 }
 
 post_remove() {
