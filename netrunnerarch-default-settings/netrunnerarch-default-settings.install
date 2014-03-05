@@ -1,0 +1,22 @@
+pre_install() {
+   # ####################################################### #
+   # Diversion of default.pa pulseaudio configuration file 
+   #
+   # This replaces the default.pa because of a bug in
+   # pulseaudios module module-switch-on-port-available 
+   # which prevents saving and restoring of audio volume 
+   # on some machines. 
+   # It should be removed if the bug is fixed. 
+   # 
+   # ####################################################### #
+   if [ -e /etc/pulse/default.pa ]; then
+    mv /etc/pulse/default.pa{,.pacorig}
+   fi
+}
+
+post_remove() {
+   # Restore default.pa if exists .pacorig
+   if [ -e /etc/pulse/default.pa.pacorig ]; then
+    mv /etc/pulse/default.pa.pacorig /etc/pulse/default.pa
+   fi
+}

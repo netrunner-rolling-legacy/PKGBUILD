@@ -11,6 +11,8 @@ depends=()
 makedepends=()
 source=('git://github.com/netrunnerarch/netrunnerarch-default-settings.git')
 md5sums=('SKIP')
+install=${pkgname}.install
+backup=('etc/pulse/default.pa')
 
 pkgver() {
 cd "$srcdir/netrunnerarch-default-settings"
