@@ -7,7 +7,6 @@ post_install() {
    # which prevents saving and restoring of audio volume 
    # on some machines. 
    # It should be removed if the bug is fixed. 
-   # 
    # ####################################################### #
    if [ -e /etc/pulse/default.pa ]; then
     mv /etc/pulse/default.pa{,.pacorig}
@@ -18,7 +17,6 @@ post_install() {
    # Diversion of default release files
    #
    # depends on: lsb-release
-   #
    # ####################################################### #
    if [ -e /etc/lsb-release ]; then
     mv /etc/lsb-release{,.pacorig}
@@ -37,21 +35,59 @@ post_install() {
    # Diversion of default pacman.conf
    # 
    # This adds the blueshell repository to pacman.conf
-   #
    # ####################################################### #
    if [ -e /etc/pacman.conf ]; then
     mv /etc/pacman.conf{,.pacorig}
    fi
    cp /usr/share/netrunner-default-settings/pacman.conf /etc/pacman.conf
+   
+   # ####################################################### #
+   # Enable plymouth by default
+   # 
+   # This enables the plymouth bootsplash by enabling 'splash'
+   # bootoption and adding plymouth to initrd
+   # ####################################################### #
+   if [ -e /etc/default/grub ]; then
+    mv /etc/default/grub{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/grub /etc/default/grub
+   if [ -e /etc/mkinitcpio.conf ]; then
+    mv /etc/mkinitcpio.conf{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/mkinitcpio.conf /etc/mkinitcpio.conf
+   
+   # ####################################################### #
+   # Set default plymouth theme
+   #
+   # This sets the default theme by overwriting plymouthd.conf
+   # ####################################################### #
+   if [ -e /etc/plymouth/plymouthd.conf ]; then
+    mv /etc/plymouth/plymouthd.conf{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/plymouthd.conf /etc/plymouth/plymouthd.conf
+   
+   # ####################################################### #
+   # Set kdm-plymouth as default display manager
+   # 
+   # This enables smooth plymouth transition to displaymanager
+   # (see: https://wiki.archlinux.org/index.php/Plymouth)
+   # ####################################################### #
+   rm '/etc/systemd/system/display-manager.service'
+   rm '/etc/systemd/system/graphical.target.wants/kdm.service'
+   ln -s '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/display-manager.service'
 }
 
 post_remove() {
+   # ###################################################### #
    # Restore default.pa if exists .pacorig
+   # ###################################################### #
    if [ -e /etc/pulse/default.pa.pacorig ]; then
     mv /etc/pulse/default.pa.pacorig /etc/pulse/default.pa
    fi
    
+   # ###################################################### #
    # Restore release files if exists .pacorig
+   # ###################################################### #
    if [ -e /etc/lsb-release.pacorig ]; then
     mv /etc/lsb-release.pacorig /etc/lsb-release
    fi
@@ -62,8 +98,27 @@ post_remove() {
     mv /etc/issue.pacorig /etc/issue
    fi
    
+   # ###################################################### #
    # Restore pacman.conf if exists .pacorig
+   # ###################################################### #
    if [ -e /etc/pacman.conf.pacorig ]; then
     mv /etc/pacman.conf.pacorig /etc/pacman.conf
    fi
+   
+   # ###################################################### #
+   # Disable plymouth 
+   # ###################################################### #
+   if [ -e /etc/default/grub.pacorig ]; then
+    mv /etc/default/grub.pacorig /etc/default/grub
+   fi
+   if [ -e /etc/mkinitcpio.conf.pacorig ]; then
+    mv /etc/mkinitcpio.conf.pacorig /etc/mkinitcpio.conf
+   fi
+   
+   # ###################################################### #
+   # Set kdm as default display manager
+   # ###################################################### #
+   rm '/etc/systemd/system/display-manager.service'
+   ln -s '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/display-manager.service'
+   ln -s '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/graphical.target.wants/kdm.service'
 }
