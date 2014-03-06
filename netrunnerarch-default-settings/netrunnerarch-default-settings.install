@@ -13,11 +13,57 @@ post_install() {
     mv /etc/pulse/default.pa{,.pacorig}
    fi
    cp /usr/share/netrunner-default-settings/default.pa /etc/pulse/default.pa
+   
+   # ####################################################### #
+   # Diversion of default release files
+   #
+   # depends on: lsb-release
+   #
+   # ####################################################### #
+   if [ -e /etc/lsb-release ]; then
+    mv /etc/lsb-release{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/lsb-release /etc/lsb-release
+   if [ -e /etc/os-release ]; then
+    mv /etc/os-release{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/os-release /etc/os-release
+   if [ -e /etc/issue ]; then
+    mv /etc/issue{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/issue /etc/issue
+   
+   # ####################################################### #
+   # Diversion of default pacman.conf
+   # 
+   # This adds the blueshell repository to pacman.conf
+   #
+   # ####################################################### #
+   if [ -e /etc/pacman.conf ]; then
+    mv /etc/pacman.conf{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/pacman.conf /etc/pacman.conf
 }
 
 post_remove() {
    # Restore default.pa if exists .pacorig
    if [ -e /etc/pulse/default.pa.pacorig ]; then
     mv /etc/pulse/default.pa.pacorig /etc/pulse/default.pa
+   fi
+   
+   # Restore release files if exists .pacorig
+   if [ -e /etc/lsb-release.pacorig ]; then
+    mv /etc/lsb-release.pacorig /etc/lsb-release
+   fi
+   if [ -e /etc/os-release.pacorig ]; then
+    mv /etc/os-release.pacorig /etc/os-release
+   fi
+   if [ -e /etc/issue.pacorig ]; then
+    mv /etc/issue.pacorig /etc/issue
+   fi
+   
+   # Restore pacman.conf if exists .pacorig
+   if [ -e /etc/pacman.conf.pacorig ]; then
+    mv /etc/pacman.conf.pacorig /etc/pacman.conf
    fi
 }
