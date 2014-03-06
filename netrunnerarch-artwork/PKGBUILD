@@ -1,0 +1,24 @@
+# Maintainer:Leszek Lesner <leszek@zevenos.com>
+pkgname=netrunnerarch-artwork
+pkgver=0+git20140306.8c08e6e
+pkgrel=1
+pkgdesc="Default Artwork for Netrunner"
+arch=('any')
+url='https://github.com/netrunnerarch/netrunner-artwork'
+license=('GPL')
+groups=('kde')
+depends=('lsb-release' 'netrunner-artwork')
+makedepends=()
+source=('git://github.com/netrunnerarch/netrunner-artwork.git')
+md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/netrunner-artwork"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+  cd $srcdir/netrunner-artwork 
+  cp -aR usr $pkgdir/
+}
