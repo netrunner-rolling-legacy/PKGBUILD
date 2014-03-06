@@ -7,7 +7,6 @@ arch=('any')
 url='https://github.com/netrunnerarch/netrunner-artwork'
 license=('GPL')
 groups=('kde')
-depends=('lsb-release' 'netrunner-artwork')
 makedepends=()
 source=('git://github.com/netrunnerarch/netrunner-artwork.git')
 md5sums=('SKIP')
