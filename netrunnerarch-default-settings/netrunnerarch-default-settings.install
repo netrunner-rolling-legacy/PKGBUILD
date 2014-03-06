@@ -72,8 +72,12 @@ post_install() {
    # This enables smooth plymouth transition to displaymanager
    # (see: https://wiki.archlinux.org/index.php/Plymouth)
    # ####################################################### #
-   rm '/etc/systemd/system/display-manager.service'
-   rm '/etc/systemd/system/graphical.target.wants/kdm.service'
+   if [ -e /etc/systemd/system/display-manager.service ]; then
+    rm '/etc/systemd/system/display-manager.service'
+   fi
+   if [ -e /etc/systemd/system/graphical.target.wants/kdm.service ]; then
+    rm '/etc/systemd/system/graphical.target.wants/kdm.service'
+   fi
    ln -s '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/display-manager.service'
 }
 
