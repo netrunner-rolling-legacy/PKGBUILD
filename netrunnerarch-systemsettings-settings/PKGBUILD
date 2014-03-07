@@ -8,7 +8,7 @@ url='https://github.com/netrunnerarch/netrunnerarch-systemsettings-settings'
 license=('GPL')
 groups=('kde')
 depends=()
-makedepends=()
+makedepends=('git')
 source=('git://github.com/netrunnerarch/netrunnerarch-systemsettings-settings.git')
 md5sums=('SKIP')
  
