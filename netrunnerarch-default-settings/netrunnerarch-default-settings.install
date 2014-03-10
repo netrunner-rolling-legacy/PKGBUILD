@@ -39,7 +39,11 @@ post_install() {
    if [ -e /etc/pacman.conf ]; then
     mv /etc/pacman.conf{,.pacorig}
    fi
-   cp /usr/share/netrunner-default-settings/pacman.conf /etc/pacman.conf
+   if [ $(uname -m) == "x86_64" ]; then 
+    cp /usr/share/netrunner-default-settings/pacman.conf /etc/pacman.conf
+   else 
+    cp /usr/share/netrunner-default-settings/pacman.conf.32 /etc/pacman.conf
+   fi
    
    # ####################################################### #
    # Enable plymouth by default
