@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url='http://quickgit.kde.org/?p=scratch%2Fhein%2Fexpanding-icons-taskmanager.git'
 license=('GPL')
 groups=('kde')
-depends=('kdelibs' 'kdebase-runtime')
+depends=('kdelibs' 'kdebase-runtime' 'kdebase-workspace')
 makedepends=('cmake' 'automoc4' 'git')
 source=('git://anongit.kde.org/scratch/hein/expanding-icons-taskmanager.git')
 md5sums=('SKIP')
