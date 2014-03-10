@@ -1,6 +1,7 @@
 # PKGBUILDS for Netrunner packages #
 
 Apps:
+- firefox
 - kmozillahelper
 - netrunnerarch-systemsettings-settings: https://github.com/netrunnerarch/netrunnerarch-systemsettings-settings
 - netrunner-default-settings: https://github.com/netrunnerarch/netrunnerarch-default-settings
