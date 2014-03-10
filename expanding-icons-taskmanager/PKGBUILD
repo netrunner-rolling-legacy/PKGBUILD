@@ -1,0 +1,30 @@
+# Maintainer: Leszek Lesner <leszek@zevenos.com>
+pkgname=expanding-icons-taskmanager
+pkgver=0
+pkgrel=1
+pkgdesc="A taskmanager for plasma which uses expanding icons"
+arch=('i686' 'x86_64')
+url='http://quickgit.kde.org/?p=scratch%2Fhein%2Fexpanding-icons-taskmanager.git'
+license=('GPL')
+groups=('kde')
+depends=('kdelibs' 'kdebase-runtime')
+makedepends=('cmake' 'automoc4' 'git')
+source=('git://anongit.kde.org/scratch/hein/expanding-icons-taskmanager.git')
+md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/expanding-icons-taskmanager"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $srcdir/expanding-icons-taskmanager
+  rm -rf build && mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  make
+}
+
+package() {
+  cd $srcdir/expanding-icons-taskmanager/build 
+  make DESTDIR=$pkgdir install
+}
