@@ -71,10 +71,19 @@ post_install() {
    cp /usr/share/netrunner-default-settings/plymouthd.conf /etc/plymouth/plymouthd.conf
    
    # ####################################################### #
-   # Set kdm-plymouth as default display manager
+   # Set xdg user dirs config
+   #
+   # This sets the configuration for the default user dirs
+   # ####################################################### #
+   if [ -e /etc/xdg/user-dirs.defaults ]; then
+    mv /etc/xdg/user-dirs.defaults{,.pacorig}
+   fi
+   cp /usr/share/netrunner-default-settings/user-dirs.defaults /etc/xdg/user-dirs.defaults
+   
+   # ####################################################### #
+   # Set sddm as default display manager
    # 
-   # This enables smooth plymouth transition to displaymanager
-   # (see: https://wiki.archlinux.org/index.php/Plymouth)
+   # This sets sddm as the default displaymanager
    # ####################################################### #
    if [ -e /etc/systemd/system/display-manager.service ]; then
     rm '/etc/systemd/system/display-manager.service'
@@ -82,7 +91,7 @@ post_install() {
    if [ -e /etc/systemd/system/graphical.target.wants/kdm.service ]; then
     rm '/etc/systemd/system/graphical.target.wants/kdm.service'
    fi
-   ln -sf '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/display-manager.service'
+   ln -sf '/usr/lib/systemd/system/sddm.service' '/etc/systemd/system/display-manager.service'
 }
 
 post_remove() {
@@ -124,9 +133,20 @@ post_remove() {
    fi
    
    # ###################################################### #
+   # Restore default xdg user dirs
+   # ###################################################### #
+   if [ -e /etc/xdg/user-dirs.defaults.pacorig ]; then
+    mv /etc/xdg/user-dirs.defaults.pacorig /etc/xdg/user-dirs.defaults
+   fi
+   
+   # ###################################################### #
    # Set kdm as default display manager
    # ###################################################### #
    rm '/etc/systemd/system/display-manager.service'
    ln -sf '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/display-manager.service'
    ln -sf '/usr/lib/systemd/system/kdm-plymouth.service' '/etc/systemd/system/graphical.target.wants/kdm.service'
+}
+
+post_upgrade() {
+  post_install
 }
