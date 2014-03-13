@@ -1,5 +1,5 @@
 # Maintainer: Rohan Garg <rohan@kde.org>
-pkgname=kaccounts-integration
+pkgname=webaccounts
 pkgver=0
 pkgrel=1
 pkgdesc='Connect to your social accounts and access your contacts, email, calendar and files from within KDE.'
