@@ -1,12 +1,12 @@
 # Maintainer: Rohan Garg <rohan@kde.org>
-pkgname=webaccounts
+pkgname=kaccounts-integration
 pkgver=0
 pkgrel=1
 pkgdesc='Connect to your social accounts and access your contacts, email, calendar and files from within KDE.'
 arch=('i686' 'x86_64')
 license=('GPL')
 groups=('kde')
-depends=('cmake' 'kdelibs' 'automoc4' 'akonadi' 'libkgapi')
+depends=('cmake' 'kdelibs' 'automoc4' 'akonadi' 'libkgapi' 'libkfbapi' 'telepathy-qt' 'telepathy-kde-common-internals')
 makedepends=('git')
 optdepends=()
 provides=()
@@ -15,23 +15,23 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=('git://anongit.kde.org/scratch/afiestas/webaccounts.git')
+source=('git://anongit.kde.org/kaccounts-integration.git#branch=stable')
 noextract=()
 md5sums=('SKIP') #autofill using updpkgsums
 
 pkgver() {
-cd "$srcdir/webaccounts"
+cd "$srcdir/kaccounts-integration"
 printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/webaccounts
+  cd $srcdir/kaccounts-integration
   rm -rf build && mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd $srcdir/webaccounts/build 
+  cd $srcdir/kaccounts-integration/build 
   make DESTDIR="$pkgdir/" install
 }
