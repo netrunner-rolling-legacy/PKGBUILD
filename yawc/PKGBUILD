@@ -1,0 +1,33 @@
+# $Id$
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=yawc
+pkgver=0.4
+pkgrel=1
+pkgdesc="A KDE-based library for accessing various Google services via their public API"
+url='http://kde-apps.org/content/show.php?content=139916'
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('kactivities' 'kdelibs')
+makedepends=('cmake' 'automoc4')
+source=("http://kde-apps.org/CONTENT/content-files/139916-yawc-0.4.tar.gz")
+md5sums=('d7a7e36690667b176cc3eeeb01dbe231')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir build
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver/build"
+  cmake ../ \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE4_BUILD_TESTS=OFF
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver/build"
+  make DESTDIR="${pkgdir}" install
+}
