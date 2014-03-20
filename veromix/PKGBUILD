@@ -23,5 +23,6 @@ build() {
 }
 
 package() {
+  cd veromix
   make DESTDIR=${pkgdir} install-plasmoid
 }
