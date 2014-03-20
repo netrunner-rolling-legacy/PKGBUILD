@@ -1,12 +1,13 @@
 pkgname=veromix-git
-pkgver=2
+pkgver=r4.53c5233
 pkgrel=1
 pkgdesc='PulseAudio mixer for Plasma'
 arch=('i686' 'x86_64')
 url='https://github.com/blue-shell/veromix'
 license=('GPL3')
-depends=('kinit-git')
-makedepends=('git' 'kdoctools-git')
+depends=('kdebindings-python' 'kdebase-workspace' 'python2-pyqt4' 'pulseaudio' 'pyxdg'  'python-gobject' 'python-dbus' 
+'python2-dbus')
+makedepends=('git' 'kdesdk-dev-scripts')
 provides=(veromix)
 source=('veromix::git+https://github.com/blue-shell/veromix.git')
 md5sums=('SKIP')
@@ -18,18 +19,16 @@ pkgver() {
 
 build() {
   cd veromix
-  make DESTDIR=${pkgdir} install
+  make DESTDIR=${pkgdir}
+  make DESTDIR=${pkgdir} install-plasmoid
 }
 
 package() {
-  # For KDE
-  rm ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/icons
-  rm ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/code/veromixcommon
-  ln -s -r ${pkgdir}/usr/share/icons ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/
-  ln -s -r ${pkgdir}/usr/share/veromix/common 
-  ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/code/veromixcommon
+  #installation
+  mkdir -p ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/
+  mkdir -p ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/code/veromixcommon
 
-   # Generating bytecode 
+   # Generating bytecode
   cd ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid
   python2 -m compileall .
 }
