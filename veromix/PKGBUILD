@@ -20,15 +20,8 @@ pkgver() {
 build() {
   cd veromix
   make DESTDIR=${pkgdir}
-  make DESTDIR=${pkgdir} install-plasmoid
 }
 
 package() {
-  #installation
-  mkdir -p ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/
-  mkdir -p ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid/contents/code/veromixcommon
-
-   # Generating bytecode
-  cd ${pkgdir}/usr/share/apps/plasma/plasmoids/veromix-plasmoid
-  python2 -m compileall .
+  make DESTDIR=${pkgdir} install-plasmoid
 }
