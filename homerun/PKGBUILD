@@ -5,16 +5,16 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=homerun
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.2.1
+pkgrel=1
 epoch=
 pkgdesc="Menu clean for KDE"
 arch=('i686' 'x86_64')
-url="http://blogs.kde.org/2014/01/29/homerun-120"
+url="https://projects.kde.org/projects/playground/base/homerun"
 license=('GPL')
 groups=()
 depends=('kdebase-plasma' 'kdebase-workspace')
-makedepends=('cmake' 'automoc4')
+makedepends=('cmake' 'automoc4' 'git')
 checkdepends=()
 optdepends=()
 provides=('homerunviewer')
@@ -24,12 +24,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://download.kde.org/stable/homerun/src/homerun-1.2.0.tar.xz")
+source=("git://anongit.kde.org/homerun")
 noextract=()
-md5sums=('c2b2b9114c0db15357fa97f766208ad4')
+md5sums=('SKIP')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd homerun
 	if [ ! -d build ];
 	then
 		mkdir "build"
@@ -40,12 +40,17 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+	cd homerun/build
 	cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..
 	make
 }
 
+pkgver() {
+  cd homerun
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
+
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+	cd "homerun/build"
 	make DESTDIR="$pkgdir/" install
 }
