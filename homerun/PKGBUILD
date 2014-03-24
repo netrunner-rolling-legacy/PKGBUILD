@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=homerun
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="Menu clean for KDE"
@@ -24,12 +24,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("git://anongit.kde.org/homerun")
+source=("http://download.kde.org/stable/homerun/src/homerun-1.2.2.tar.xz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('b19f23a44c463fd7c96503368e905cdc')
 
 prepare() {
-	cd homerun
+	cd $pkgname-$pkgver
 	if [ ! -d build ];
 	then
 		mkdir "build"
@@ -40,17 +40,12 @@ prepare() {
 }
 
 build() {
-	cd homerun/build
+	cd $pkgname-$pkgver/build
 	cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..
 	make
 }
 
-pkgver() {
-  cd homerun
-  echo $(git rev-list --count master).$(git rev-parse --short master)
-}
-
 package() {
-	cd "homerun/build"
+	cd $pkgname-$pkgver/build
 	make DESTDIR="$pkgdir/" install
 }
