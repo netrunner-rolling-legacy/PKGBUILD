@@ -7,21 +7,26 @@ backup=('etc/sddm.conf')
 url="http://github.com/sddm/sddm"
 license=('GPL')
 depends=('qt4')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 
-source=(https://github.com/sddm/sddm/archive/$pkgver.tar.gz)
-md5sums=(5da271716883811819411ece2e41b88a)
+source=(git://github.com/blue-shell/sddm.git)
+md5sums=(SKIP)
+
+pkgver() {
+    cd $pkgname
+    printf "$pkgver+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd $pkgname-$pkgver && 
-  mkdir -p build && 
+  cd $pkgname &&
+  mkdir -p build &&
   cd build &&
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DQT_QMAKE_EXECUTABLE=qmake-qt4 &&
   make
 }
 
 package() {
-  cd $pkgname-$pkgver/build &&
+  cd $pkgname/build &&
   make DESTDIR="$pkgdir" install
 }
 
