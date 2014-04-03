@@ -5,7 +5,7 @@
 _pkgname=thus
 pkgname=thus
 pkgver=0.8.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical Installer for Manjaro Linux'
 arch=(any)
 license=(GPL)
