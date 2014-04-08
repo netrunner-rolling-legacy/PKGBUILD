@@ -2,24 +2,18 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkgapi
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A KDE-based library for accessing various Google services via their public API"
 url='https://projects.kde.org/projects/extragear/libs/libkgapi'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('kdepimlibs')
-makedepends=('cmake' 'automoc4' 'boost' 'git')
+makedepends=('cmake' 'automoc4' 'boost')
 replaces=('akonadi-google' 'libkgoogle')
 conflicts=('akonadi-google' 'libkgoogle')
-source=("git://anongit.kde.org/libkgapi#branch=LibKGAPI/2.1")
-md5sums=('SKIP')
-
-pkgver() {
-cd "$srcdir/libkgapi"
-printf "2.1.0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
-}
-
+source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('b93450d22cfc7d11f4d070691f4b39a0')
 
 prepare() {
   mkdir build
@@ -27,7 +21,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname} \
+  cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE4_BUILD_TESTS=OFF
