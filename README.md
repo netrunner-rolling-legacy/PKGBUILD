@@ -14,7 +14,7 @@ patched compared to manajaro repos:
 
 
 missing packages not in manjaro repos nor AUR:
-- firefox-kde
+- firefox-kde (https://aur.archlinux.org/packages/firefox-kde-opensuse/ ?)
 - kmozillahelper
 - plasma-widget-netrunner-desktop: https://github.com/blue-shell/folderview
 - rootactions-servicemenu: https://github.com/netrunner/rootactions-servicemenu
