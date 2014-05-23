@@ -7,9 +7,9 @@ arch=('i686' 'x86_64')
 url='https://github.com/blue-shell/folderview'
 license=('GPL3')
 groups=('kde')
-depends=('kdelibs' 'nepomuk-core' 'nepomuk-widgets' 'kactivities' 'kdebase-runtime')
+depends=('kdelibs' 'kactivities' 'baloo' 'baloo-widgets' 'kdebase-runtime')
 makedepends=('cmake' 'automoc4' 'git')
-source=('git://github.com/blue-shell/folderview.git#branch=netrunner/netrunner-desktop-4.11')
+source=('git://github.com/blue-shell/folderview.git#branch=netrunner/netrunner-desktop-4.13')
 md5sums=('SKIP')
 
 pkgver() {
