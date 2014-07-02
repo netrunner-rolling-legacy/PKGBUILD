@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=homerun
-pkgver=1.2.2
+pkgver=1.2.5
 pkgrel=1
 epoch=
 pkgdesc="Menu clean for KDE"
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://download.kde.org/stable/homerun/src/homerun-1.2.2.tar.xz")
+source=("http://download.kde.org/stable/homerun/src/homerun-${pkgver}.tar.xz")
 noextract=()
-md5sums=('b19f23a44c463fd7c96503368e905cdc')
+md5sums=('86ebece69eae72c548adf40da02aa354')
 
 prepare() {
 	cd $pkgname-$pkgver

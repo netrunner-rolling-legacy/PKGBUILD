@@ -8,7 +8,7 @@
 #_pgo=true
 
 pkgname=firefox-kde
-pkgver=29.0
+pkgver=30.0
 pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ provides=("firefox=${pkgver}")
 conflicts=('firefox')
 install=firefox.install
 options=(!emptydirs)
-_patchrev=ae78294f6f84
+_patchrev=8ce6c378e34d
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.bz2
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js kde.js firefox-20.0.1-fixed-loading-icon.png
@@ -164,20 +164,20 @@ package() {
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 
-sha256sums=('64402a1f1359f3ea30767a94977ae823ac25b39c6d54f9fe6db444ed127db892'
+sha256sums=('1e95740a8cf7095e210fb6a2313c4d0fba4fdf44ee7c327d01f202638403c22c'
             '06afb7b29677674cda22571cb739e23a835b3bb160dc981d0bda6653b7a1f2c2'
             '175d03cf3d8eb420d24a5a3072be69c9603e3ddacd3a83f68f49754eaecf6c5a'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '7044b77fb5d4113359144d24beccaf5d1e7cf62c660e3f5c1374bee5b2bf9c00'
             'b8cc5f35ec35fc96ac5c5a2477b36722e373dbb57eba87eb5ad1276e4df7236d'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            '4785bdf086b7d537cb83369fea5c177eddb6fc3d8a69064599c64376bd985051'
-            'cb2816204131ccfb659b75c4aa831ab6060e27a0b756b143ca4c0850c44d8f70'
+            '9c65592e23e242609899c421066e4d9094b8759c529e5608bcb08ec201bf088b'
+            '34ae88d9a96361776162a9f97a52a3f642c8dbeb204f789c29c7b361261de8b1'
             '1fd54e93db3a4d454ece5a6dc788a4ae36805eb497482add82a11ac5cf990562'
             '3d439f0a65bc285a43284dfd02d71facdfcf172afc19889bd66edc90c59cdc19'
-            '961594b16e534f8c77e1ca7b70d468e166de75e4692b8cb3ea35c4479fa988f5'
-            'aca072853b379201b0d8ac8128eb6e0e8255ab0c955d7bfd48f6273c8bf245d5'
+            '02a61c770bc922f236c9643ef063433ee950c6b5653f17791105946bf3f449f5'
+            '15ba009c12b76c20744cbc8d7d1840b979a5962b536f01798bb0c4bf04500bfb'
             'e8289ea4c1f8191e1e23661312ceee2128b8e790501b9a589d0d7bfc4384553f'
-            '86acf2785ec45047cd614bee54e650397aab109da7d5fa70a0df6f11e161998e'
+            '23ab3fcd22a587dfa6ddc8c03eecc86851121432c9ba8184f1e41ba4b37eb7da'
             '5f6b0970284d68d5ed18e6bb7ee1e9fc0025ab3c10aaa14c283adb21a4a20ee8'
             '60ace1c57577878850e05976ccf02f7e71512c4d62a8a9a6d270a7941d9625d3')
