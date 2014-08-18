@@ -1,5 +1,5 @@
 # Maintainer:Leszek Lesner <leszek@zevenos.com>
-pkgname=netrunnerroling-wallpapers-1404
+pkgname=netrunnerrolling-wallpapers-1404
 pkgver=0+git20140306.8c08e6e
 pkgrel=1
 pkgdesc="Default Wallpapers for Netrunner 2014.04"
@@ -12,12 +12,12 @@ source=('git://github.com/netrunnerarch/netrunnerrolling-wallpapers.git#branch=2
 md5sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/netrunnerroling-wallpapers"
+cd "$srcdir/netrunnerrolling-wallpapers"
 printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 
 package() {
-  cd $srcdir/netrunnerroling-wallpapers 
+  cd $srcdir/netrunnerrolling-wallpapers
   cp -aR usr $pkgdir/
 }
