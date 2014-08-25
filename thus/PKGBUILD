@@ -23,7 +23,7 @@ _development=No
 
 if [ "$_git" == "Yes" ]; then
    makedepends=(git)
-   source=(git+https://github.com/netrunnerarch/thus.git)
+   source=(git+https://github.com/netrunnerarch/thus.git#branch=tracking)
    sha256sums=('SKIP')
 else
    source=("$pkgname-$pkgver.tar.gz::https://github.com/manjaro/thus/archive/$pkgver.tar.gz")
