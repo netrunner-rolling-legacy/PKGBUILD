@@ -116,6 +116,18 @@ post_install() {
     fi
     cp /usr/share/netrunner-default-settings/sddm/faces/user.jpg /usr/share/apps/sddm/faces/user.jpg
    fi
+   
+   # ####################################################### #
+   # Set localization names for packages
+   # 
+   # This overwrites the default rules for localized packages
+   # ####################################################### #
+   if [ -e /usr/share/netrunner-default-settings/language_packages.list ]; then
+    if [ -e /var/lib/manjaro-system-settings/language_packages.list ]; then
+      mv /var/lib/manjaro-system-settings/language_packages.list{,.pacorig}
+    fi
+    cp /usr/share/netrunner-default-settings/language_packages.list /var/lib/manjaro-system-settings/language_packages.list
+   fi
 }
 
 post_remove() {
@@ -181,6 +193,13 @@ post_remove() {
    fi
    if [ -e /usr/share/apps/sddm/faces/user.jpg.pacorig ]; then
       mv /usr/share/apps/sddm/faces/user.jpg.pacorig /usr/share/apps/sddm/faces/user.jpg.icon
+   fi
+   
+   # ####################################################### #
+   # Restore original language_packages.list
+   # ####################################################### #
+   if [ -e /var/lib/manjaro-system-settings/language_packages.list.pacorig ]; then
+     mv /var/lib/manjaro-system-settings/language_packages.list.pacorig /var/lib/manjaro-system-settings/language_packages.list
    fi
 }
 
