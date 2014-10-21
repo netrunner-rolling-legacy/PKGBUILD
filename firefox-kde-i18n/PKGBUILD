@@ -6,7 +6,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgbase=firefox-kde-i18n
-pkgver=30.0
+pkgver=33.0
 pkgrel=1
 pkgdesc="Language pack for Firefox"
 arch=('any')
