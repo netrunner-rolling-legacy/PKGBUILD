@@ -6,14 +6,15 @@ netrunner specific packages:
 - netrunnerarch-systemsettings-settings: https://github.com/netrunnerarch/netrunnerarch-systemsettings-settings
 
 
-patched compared to manajaro repos:
-- sddm
-- thus
-- transmission (compiled against kde4)
-- vokoscreen (language fixed)
+patched compared to manjaro repos:
+- thus (customized version)
+- sddm (had some fixes?)
+- transmission-qt (compiled against kde4)
+- vokoscreen (language fix)
 
 
 missing packages not in manjaro repos nor AUR:
+- expanding-icons-taskmanager
 - firefox-kde (https://aur.archlinux.org/packages/firefox-kde-opensuse/ ?)
 - kmozillahelper
 - plasma-widget-netrunner-desktop: https://github.com/blue-shell/folderview
