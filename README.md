@@ -26,6 +26,7 @@ missing packages not in manjaro repos nor AUR:
 YAOURT compiled packages:
 - burgerspace
 - gltron
+- googletalk-plugin
 - homerun
 - kamoso
 - kcm-about-distro
