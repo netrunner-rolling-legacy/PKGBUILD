@@ -8,7 +8,7 @@
 #_pgo=true
 
 pkgname=firefox-kde
-pkgver=33.0
+pkgver=34.0.5
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -16,18 +16,18 @@ license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-	 'libvpx' 'icu' 'libevent' 'nss>=3.17.1' 'nspr>=4.10.7' 'hunspell' 
+	 'libvpx' 'icu'  'libevent' 'nss>=3.17.2' 'nspr>=4.10.7' 'hunspell' 
 	 'sqlite' 'libnotify' 'kmozillahelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
-             'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs' 'inetutils' 'which')
+             'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs' 'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'gst-plugins-good: h.264 video'
 	    'gst-libav: h.264 video')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
 install=firefox.install
-options=('!emptydirs')
-_patchrev=fd46c2b70724
+options=('!emptydirs' '!makeflags')
+_patchrev=9e3063dcc69e
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.bz2
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js kde.js firefox-fixed-loading-icon.png
@@ -45,6 +45,10 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
 	$_patchurl/toolkit-download-folder.patch
 )
 
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
@@ -52,18 +56,11 @@ prepare() {
 
   cp "$srcdir/mozconfig" .mozconfig
 
-  # Temporary workaround for i686 build
-  if [[ $CARCH == i686 ]]; then
-    echo "ac_add_options --disable-optimize" >>.mozconfig
-  elif [[ $CARCH == x86_64 ]]; then
-    echo "ac_add_options --enable-optimize" >>.mozconfig
-  fi
-
   patch -Np1 -i "$srcdir/firefox-install-dir.patch"
   echo -n "$_google_api_key" > google-api-key
 
   # https://bugs.archlinux.org/task/41689
-  patch -Np1 -i "$srcdir/rhbz-966424.patch"
+  patch -Np2 -i "$srcdir/rhbz-966424.patch"
 
   msg "Patching for KDE"
   patch -Np1 -i "$srcdir/toolkit-download-folder.patch"
@@ -81,9 +78,13 @@ prepare() {
   # https://bugs.archlinux.org/task/34644
   sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
+  # WebRTC build tries to execute "python" and expects Python 2
+  mkdir -p "$srcdir/path"
+  ln -sf /usr/bin/python2 "$srcdir/path/python"
+
   # Fix tab loading icon (flickers with libpng 1.6)
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  # TODO: Remove this; Firefox 34 might use CSS animations for the loading icon
+  # TODO: Remove this; Firefox 36 might use CSS animations for the loading icon
   # https://bugzilla.mozilla.org/show_bug.cgi?id=759252
   cp "$srcdir/firefox-fixed-loading-icon.png" \
     browser/themes/linux/tabbrowser/loading.png
@@ -98,7 +99,6 @@ build() {
   cd mozilla-release
 
   export PATH="$srcdir/path:$PATH"
-  export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/firefox"
   export PYTHON="/usr/bin/python2"
 
   if [[ -n $_lowmem || $CARCH == i686 ]]; then
