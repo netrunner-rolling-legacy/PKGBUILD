@@ -12,6 +12,7 @@ DELETED:
 - homerun
 - kdeplasma-applets-veromix
 - libkgapi
+- plasma-widget-netrunner-desktop: https://github.com/blue-shell/folderview
 
 
 
@@ -27,7 +28,6 @@ patched compared to manjaro repos:
 
 missing packages not in manjaro repos nor AUR:
 - expanding-icons-taskmanager
-- plasma-widget-netrunner-desktop: https://github.com/blue-shell/folderview
 - rootactions-servicemenu: https://github.com/netrunner/rootactions-servicemenu
 - sambamounter: http://quickgit.kde.org/?p=scratch%2Fafiestas%2Fsamba-mounter.git
 
