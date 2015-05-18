@@ -1,6 +1,6 @@
 # PKGBUILDS for Netrunner packages #
 
-DELETED:
+REMOVE:
 - firefox-kde (https://aur.archlinux.org/packages/firefox-kde-opensuse/ ?)
 - kmozillahelper
 - webaccounts: http://quickgit.kde.org/?p=scratch%2Fafiestas%2Fwebaccounts.git
