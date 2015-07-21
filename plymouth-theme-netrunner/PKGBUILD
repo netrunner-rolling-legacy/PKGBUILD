@@ -1,0 +1,43 @@
+# Based on Arch-Logo Plymouth Theme by Carlos Molines (karlinux)
+# http://karlinux.deviantart.com/#/d3grgbm
+
+# Maintainer: Guinux <nuxgui@gmail.com>
+
+pkgname=plymouth-theme-netrunner
+pkgver=1.0
+pkgrel=1
+pkgdesc="Netrunner theme for plymouth"
+arch=('any')
+url="http://freedesktop.org/wiki/Software/Plymouth"
+license=('GPL')
+depends=('plymouth')
+#install=theme.install
+source=('anim-netrunner-logo.png'
+        'animation.png'
+        'box.png'
+        'bullet.png'
+        'entry.png'
+        'lock.png'
+        'netrunner-logo.grub'
+        'netrunner-logo.plymouth'
+        'netrunner-logo.script')
+md5sums=('0aa5d3b300a6b55f624f5fafa3364711'
+            '0551c4b9b18ec758b95c10c1e686b4e9'
+            '9eae51832ae0c47365660baa8fd1f96e'
+            '393e37bb1913244e467b0c2f3d1f42af'
+            '9a44031ebbf383832400cb4bf6bcbe54'
+            '4af9eb98c19706daab3fc28a8e68f020'
+            '77fa725fc255174219c7874cddac6ad0'
+            'f8ae0e03cedb800454418d1c5d3c4c98'
+            'f9366ba613eea937327094f569ea81d5')
+
+package() {
+  install -Dm644 "${srcdir}/anim-netrunner-logo.png" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/anim-netrunner-logo.png"
+  install -Dm644 "${srcdir}/animation.png" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/animation.png"
+  install -Dm644 "${srcdir}/box.png" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/box.png"
+  install -Dm644 "${srcdir}/bullet.png" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/bullet.png"
+  install -Dm644 "${srcdir}/lock.png" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/lock.png"
+  install -Dm644 "${srcdir}/netrunner-logo.grub" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/netrunner-logo.grub"
+  install -Dm644 "${srcdir}/netrunner-logo.plymouth" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/netrunner-logo.plymouth"
+  install -Dm644 "${srcdir}/netrunner-logo.script" "${pkgdir}/usr/share/plymouth/themes/netrunner-logo/netrunner-logo.script"
+}

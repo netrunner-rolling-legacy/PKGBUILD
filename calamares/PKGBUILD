@@ -1,0 +1,60 @@
+# Maintainer: Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Modified for Netrunner Rolling by James Kittsmiller (AJSLye) <jameskittsmiller@gmail.com>
+
+pkgname=calamares
+pkgver=1.1.2
+pkgrel=6
+pkgdesc='Distribution-independent installer framework'
+arch=('i686' 'x86_64')
+license=(GPL)
+url="http://calamares.io/"
+license=('LGPL')
+conflicts=('calamares-git')
+depends=('kconfig' 'kcoreaddons' 'ki18n' 'solid' 'yaml-cpp' 'parted' 'boost' 'hwinfo' 'qt5-svg' 'polkit-qt5')
+makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
+backup=('usr/share/calamares/modules/displaymanager.conf'
+        'usr/share/calamares/modules/grubcfg.conf'
+        'usr/share/calamares/modules/initcpio.conf'
+        'usr/share/calamares/modules/unpackfs.conf')
+source=("https://github.com/calamares/calamares/releases/download/v$pkgver/calamares-$pkgver.tar.gz"
+        'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling')
+
+md5sums=('b2dda1519a32bd002b712c9673c912e3'
+         'SKIP')
+
+
+prepare() {
+		cp -a "$srcdir/$pkgname-netrunner-rolling/." "$srcdir/$pkgname-$pkgver"
+		rm -rf "$srcdir/$pkgname-$pkgver/.git"
+}
+
+build() {
+	cd "$srcdir/calamares-$pkgver"
+
+	mkdir -p build
+	cd build
+        cmake .. \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX=/usr \
+              -DWITH_PARTITIONMANAGER=1 \
+              -DCMAKE_INSTALL_LIBDIR=lib
+        make
+}
+
+package() {
+	cd "$srcdir/calamares-$pkgver/build"
+
+	make DESTDIR="$pkgdir" install
+	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
+	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
+	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/services.conf"
+	install -Dm644 "../conf/settings.conf" "$pkgdir/usr/share/calamares/settings.conf"
+	install -Dm644 "../conf/unpackfs.conf" "$pkgdir/usr/share/calamares/modules/unpackfs.conf"
+	mkdir -p /usr/share/icons/
+	install -Dm644 "../data/calamares.png" "$pkgdir/usr/share/icons/calamares.png"
+	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
+	rm -r "$pkgdir/usr/lib/calamares/modules/dummyprocess/"
+	rm -r "$pkgdir/usr/lib/calamares/modules/dummypython/"
+	rm "$pkgdir/usr/share/calamares/modules/dummypython.conf"
+}

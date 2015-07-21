@@ -1,0 +1,53 @@
+# $Id$
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Antonio Rojas
+
+pkgname=kinfocenter
+pkgver=5.3.2
+pkgrel=5
+pkgdesc='A utility that provides information about a computer system'
+arch=('i686' 'x86_64')
+url='https://www.kde.org/applications/system/kinfocenter/'
+license=('LGPL')
+depends=('kdelibs4support' 'kcmutils' 'pciutils' 'glu' 'libraw1394' 'kwayland')
+makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework')
+conflicts=('kdebase-workspace')
+groups=('plasma')
+source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
+        'netrunner-rolling-logo.svg'
+        'kcm-about-distrorc'
+        'rb123995.patch')
+md5sums=('baf95f4bd09e886f3d25b5f2799cf2d8'
+         'cd6c97760883ccf780e0bbdd926fbb01'
+         '8b2ef8505794c3baf2f3c1895043ba37'
+         '49c0f1480d57dc66c43322539a4c337a')
+
+prepare() {
+  mkdir -p build
+  # BUG: 344971 
+  # https://bugs.kde.org/show_bug.cgi?id=344971
+  # https://git.reviewboard.kde.org/r/123995/
+  patch -p1 -i "$srcdir"/rb123995.patch
+}
+
+build() {
+  cd build
+  cmake ../${pkgname}-${pkgver} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="${pkgdir}" install
+
+# Install Arch logo
+  install -Dm644 "$srcdir"/netrunner-rolling-logo.svg "$pkgdir"/usr/share/about-distro/netrunner-rolling-logo.svg
+  install -Dm644 "$srcdir"/kcm-about-distrorc "$pkgdir"/etc/xdg/kcm-about-distrorc
+}
+ 

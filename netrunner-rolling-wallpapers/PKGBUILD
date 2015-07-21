@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-rolling-wallpapers
+pkgver=2015.06
+pkgrel=1
+pkgdesc="Default Artwork for Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-rolling-wallpapers'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-rolling-wallpapers.git')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-rolling-wallpapers 
+  cp -aR usr $pkgdir/
+}
