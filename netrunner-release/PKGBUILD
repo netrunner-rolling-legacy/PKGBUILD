@@ -1,0 +1,16 @@
+# Maintainer: James Kittsmiller (AJSlye) <jameskittsmiller@gmail.com>
+
+pkgname=netrunner-release
+pkgver=1.0
+pkgrel=1
+pkgdesc="Adds a Netrunner Rolling lsb-release file"
+arch=('any')
+url="N/A"
+license=('GPL')
+depends=('bash')
+source=("lsb-release")
+md5sums=('SKIP')
+
+package() {
+  install -Dm755 lsb-release $pkgdir/etc/lsb-release
+}

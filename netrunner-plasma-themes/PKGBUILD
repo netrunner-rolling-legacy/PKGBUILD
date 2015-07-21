@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-plasma-themes
+pkgver=2015.06
+pkgrel=1
+pkgdesc="Themes for the plasma desktop"
+arch=('any')
+url='https://github.com/netrunner-rollingnetrunner-plasma-themes'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-plasma-themes.git')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-plasma-themes
+  cp -aR usr $pkgdir/
+}

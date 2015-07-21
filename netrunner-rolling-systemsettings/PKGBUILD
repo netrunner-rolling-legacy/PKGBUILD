@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-rolling-systemsettings
+pkgver=2015.06
+pkgrel=1
+pkgdesc="Systemsettings modification for Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-rolling-systemsettings'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-rolling-systemsettings')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-rolling-systemsettings
+  cp -aR etc $pkgdir/
+}
