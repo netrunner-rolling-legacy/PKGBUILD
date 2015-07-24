@@ -1,6 +1,6 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
-pkgname=netrunner-artwork-firefox
-pkgver=2015.06
+pkgname=netrunner-artwork-firefox-2015.06
+pkgver=1.0
 pkgrel=1
 pkgdesc="Netrunner Artwork Firefox containing the firefox profile with artwork"
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/netrunner-rolling/netrunner-artwork-firefox'
 license=('GPL')
 groups=('kde')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-artwork-firefox')
+source=('git://github.com/netrunner-rolling/netrunner-artwork-firefox#branch=2015.06')
 md5sums=('SKIP')
 package() {
   cd $srcdir/netrunner-artwork-firefox

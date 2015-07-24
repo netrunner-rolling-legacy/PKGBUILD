@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=desktop-theme-diamond
+pkgver=1.0
+pkgrel=1
+pkgdesc="The Diamond desktop theme for the Plasma desktop"
+arch=('any')
+url='https://github.com/netrunner-rolling/desktop-theme-diamond'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/desktop-theme-diamond')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/desktop-theme-diamond
+  cp -aR usr $pkgdir/
+}

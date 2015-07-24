@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=desktop-theme-gnome-shell-kde
+pkgver=1.0
+pkgrel=1
+pkgdesc="The GNOME-Shell-KDE desktop theme for the Plasma desktop"
+arch=('any')
+url='https://github.com/netrunner-rolling/desktop-theme-gnome-shell-kde'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/desktop-theme-gnome-shell-kde')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/desktop-theme-gnome-shell-kde
+  cp -aR usr $pkgdir/
+}

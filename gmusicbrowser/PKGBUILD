@@ -1,6 +1,7 @@
 # Maintainer: Spike29 <leguen.yannick@gmail.com>
 # Contributor: jsteel <mail at jsteel dot org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
+# moidified by AJSlye for netrunnner filterfun layout
 
 pkgname=gmusicbrowser
 pkgver=1.1.14
