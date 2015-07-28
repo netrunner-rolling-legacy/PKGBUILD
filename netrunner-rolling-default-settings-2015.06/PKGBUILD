@@ -1,7 +1,7 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-rolling-default-settings-2015.06
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Default settings for Plasma and Applications for Netrunner 2015.06"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-rolling-default-settings'
@@ -13,9 +13,4 @@ md5sums=('SKIP')
 package() {
   cd $srcdir/netrunner-rolling-default-settings
   cp -aR etc $pkgdir/
-  cp -aR usr $pkgdir/
-  mkdir -p "${pkgdir}/var/lib/samba/usershare"
-  chgrp users "${pkgdir}/var/lib/samba/usershare"
-  chmod 1775 "${pkgdir}/var/lib/samba/usershare"
-  
 }

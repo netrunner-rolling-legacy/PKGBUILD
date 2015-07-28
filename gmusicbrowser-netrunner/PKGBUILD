@@ -3,9 +3,9 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # moidified by AJSlye for netrunnner filterfun layout
 
-pkgname=gmusicbrowser
+pkgname=gmusicbrowser-netrunner
 pkgver=1.1.14
-pkgrel=4
+pkgrel=1
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -35,14 +35,14 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'perl-net-dbus: control gmusicbrowser through dbus and gnome hotkeys'
             'perl-gtk2-notify: show notifications using libnotify'
             'perl-html-parser: support for accented characters in lyrics plugin')
-conflicts=('gmusicbrowser-devel' 'gmusicbrowser-development' 'gmusicbrowser-git' 'gmusicbrowser-shimmer' 'gmusicbrowser-shimmer-git')
+conflicts=('gmusicbrowser' 'gmusicbrowser-devel' 'gmusicbrowser-development' 'gmusicbrowser-git' 'gmusicbrowser-shimmer' 'gmusicbrowser-shimmer-git')
 options=('!libtool')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz)
 md5sums=('fbdf48aedb17876ee0d5da8b52fafcd2')
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/gmusicbrowser-$pkgver
 
   make DESTDIR="$pkgdir/" install
 
