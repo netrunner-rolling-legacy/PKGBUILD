@@ -7,6 +7,7 @@ arch=('any')
 url='https://github.com/netrunner-rolling/desktop-theme-enlightenment'
 license=('GPL')
 groups=('kde')
+depends=(plasma-workspace)
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/desktop-theme-enlightenment')
 md5sums=('SKIP')

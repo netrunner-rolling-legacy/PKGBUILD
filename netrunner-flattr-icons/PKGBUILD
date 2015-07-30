@@ -6,7 +6,6 @@ pkgdesc="Flattr icon theme for Netrunner Rolling"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-flattr-icons'
 license=('GPL')
-groups=('kde')
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-flattr-icons.git')
 md5sums=('SKIP')

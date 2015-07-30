@@ -6,7 +6,6 @@ pkgdesc="Windows cursors for Netrunner Rolling"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-windows-cursors'
 license=('GPL')
-groups=('kde')
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-windows-cursors.git')
 md5sums=('SKIP')

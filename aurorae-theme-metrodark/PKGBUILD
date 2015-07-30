@@ -7,6 +7,7 @@ arch=('any')
 url='https://github.com/netrunner-rolling/aurorae-theme-metrodark'
 license=('GPL')
 groups=('kde')
+depends=(plasma-workspace)
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/aurorae-theme-metrodark')
 md5sums=('SKIP')

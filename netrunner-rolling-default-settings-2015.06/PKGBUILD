@@ -1,7 +1,7 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-rolling-default-settings-2015.06
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Default settings for Plasma and Applications for Netrunner 2015.06"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-rolling-default-settings'

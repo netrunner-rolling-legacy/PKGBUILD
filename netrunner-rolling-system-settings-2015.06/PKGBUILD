@@ -1,12 +1,13 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-rolling-system-settings-2015.06
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Default system settings for Netrunner Rolling 2015.06"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-rolling-system-settings'
 license=('GPL')
 groups=('kde')
+depends=(bash grub xdg-utils sddm plasma-workspace)
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-rolling-system-settings#branch=2015.06')
 md5sums=('SKIP')
