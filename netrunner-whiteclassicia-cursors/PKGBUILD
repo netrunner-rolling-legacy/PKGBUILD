@@ -1,0 +1,15 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-whiteclassicia-cursors
+pkgver=1.0
+pkgrel=1
+pkgdesc="White Classicia++ cursors for Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-whiteclassicia-cursors'
+license=('GPL')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-whiteclassicia-cursors.git')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-whiteclassicia-cursors
+  cp -aR usr $pkgdir/
+}
