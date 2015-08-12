@@ -1,9 +1,0 @@
-[Plymouth Theme]
-Name=netrunner-logo
-Description=Netrunner Plymouth Circle
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/netrunner-logo
-ScriptFile=/usr/share/plymouth/themes/netrunner-logo/netrunner-logo.script
-
