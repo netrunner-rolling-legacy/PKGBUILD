@@ -1,0 +1,33 @@
+# Maintainer: AJSlye ,jameskittsmiller@gmail.com>
+pkgname=simplemenu
+pkgver=0.6
+pkgrel=2
+pkgdesc="A simple Menu for Plasma 5"
+arch=('i686' 'x86_64')
+license=('GPL')
+groups=('kde')
+depends=('kdelibs4support' 'kpeople' 'krunner' 'plasma-workspace' 'qt5-x11extras' 'qt5-base')
+makedepends=('cmake' 'git' 'extra-cmake-modules' 'kdoctools')
+source=('git://anongit.kde.org/scratch/hein/simplemenu.git')
+md5sums=('SKIP')
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${pkgname}\
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=/usr/lib \
+    -DLIBEXEC_INSTALL_DIR=/usr/lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="${pkgdir}" install
+}

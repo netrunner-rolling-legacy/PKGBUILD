@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-rolling-wallpapers-extra
+pkgver=1.0
+pkgrel=1
+pkgdesc="Extra Wallpapers from Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-rolling-wallpapers-extra'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-rolling-wallpapers-extra')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-rolling-wallpapers-extra
+  cp -aR usr $pkgdir/
+}

@@ -1,6 +1,6 @@
 # Maintainer: Leszek Lesner <leszek@zevenos.com>
 pkgname=carbon-gtk3
-pkgver=0
+pkgver=1.0
 pkgrel=1
 pkgdesc="Carbon widget theme for GTK3-based applications"
 arch=('i686' 'x86_64')

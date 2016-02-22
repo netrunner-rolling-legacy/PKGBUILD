@@ -1,6 +1,6 @@
 # Maintainer: Leszek Lesner <leszek@zevenos.com>
 pkgname=expanding-icons-taskmanager
-pkgver=0
+pkgver=1.0
 pkgrel=1
 pkgdesc="A taskmanager for plasma which uses expanding icons"
 arch=('i686' 'x86_64')

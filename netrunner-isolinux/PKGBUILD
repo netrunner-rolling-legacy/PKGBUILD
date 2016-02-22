@@ -1,0 +1,32 @@
+pkgname=netrunner-isolinux
+pkgver=20151219
+pkgrel=1
+pkgdesc='Development tools for Manjaro Linux (isolinux)'
+arch=('i686' 'x86_64')
+license=('GPL')
+url='https://github.com/netrunner-rolling/artwork-gfxboot'
+provides=("isolinux")
+makedepends=('gfxboot' 'cpio' 'git' 'fribidi')
+conflicts=('manjaro-isolinux')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+# pkgver() {
+#   cd ${srcdir}/artwork-gfxboot
+#   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# }
+
+pkgver() {
+    date +%Y%m%d
+}
+
+build() {
+    cd ${srcdir}/artwork-gfxboot
+    make
+}
+
+package() {
+    cd ${srcdir}/artwork-gfxboot
+    install -d $pkgdir/usr/share/manjaro-tools/isolinux
+    install -D $srcdir/artwork-gfxboot/isolinux/* $pkgdir/usr/share/manjaro-tools/isolinux
+}

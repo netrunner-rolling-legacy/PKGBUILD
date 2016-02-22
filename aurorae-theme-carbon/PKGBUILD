@@ -1,6 +1,6 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=aurorae-theme-carbon
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="The carbon aurorae theme for the Plasma desktop"
 arch=('any')

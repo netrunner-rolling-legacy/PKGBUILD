@@ -1,0 +1,17 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-artwork-skype
+pkgver=1.0
+pkgrel=1
+pkgdesc="Netrunner Artwork Skype containing the skype profile with artwork"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-artwork-skype'
+license=('GPL')
+groups=('kde')
+replaces=(netrunner-artwork-skype-2015.09)
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-artwork-skype')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-artwork-skype
+  cp -aR etc $pkgdir/
+}

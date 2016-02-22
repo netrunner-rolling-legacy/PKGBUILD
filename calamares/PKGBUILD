@@ -1,37 +1,58 @@
-# Maintainer: Iwan Timmer <irtimmer@gmail.com>
 # Maintainer: Philip Müller <philm[at]manjaro[dog]org>
-# Modified for Netrunner Rolling by James Kittsmiller (AJSLye) <jameskittsmiller@gmail.com>
 
 pkgname=calamares
-pkgver=1.1.2
-pkgrel=6
+_pointver=4.2
+pkgver=1.1.${_pointver}
+pkgrel=13
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
 license=(GPL)
-url="http://calamares.io/"
+url="https://github.com/calamares"
 license=('LGPL')
-conflicts=('calamares-git')
-depends=('kconfig' 'kcoreaddons' 'ki18n' 'solid' 'yaml-cpp' 'parted' 'boost' 'hwinfo' 'qt5-svg' 'polkit-qt5')
-makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
-backup=('usr/share/calamares/modules/displaymanager.conf'
-        'usr/share/calamares/modules/grubcfg.conf'
+install=calamares.install
+depends=('kconfig' 'kcoreaddons' 'ki18n' 'solid' 'yaml-cpp' 'python' 'parted'
+         'boost-libs' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gptfdisk' 'gtk-update-icon-cache')
+makedepends=('extra-cmake-modules' 'qt5-tools' 'git' 'boost')
+backup=('usr/share/calamares/modules/bootloader.conf'
+        'usr/share/calamares/modules/displaymanager.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
-source=("https://github.com/calamares/calamares/releases/download/v$pkgver/calamares-$pkgver.tar.gz"
-        'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling')
+        
+source+=('git+https://github.com/calamares/calamares.git#branch=1.1.x-stable'
+       'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling.git#branch=1.1.x-stable')
 
-md5sums=('b2dda1519a32bd002b712c9673c912e3'
-         'SKIP')
-
-
+sha256sums=('SKIP'
+            'SKIP')
+            
 prepare() {
-		cp -a "$srcdir/$pkgname-netrunner-rolling/." "$srcdir/$pkgname-$pkgver"
-		rm -rf "$srcdir/$pkgname-$pkgver/.git"
+	cp -a "$srcdir/$pkgname-netrunner-rolling/." "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname"
+
+	_ver="$(cat CMakeLists.txt | grep -m3 -e CALAMARES_VERSION_MAJOR -e CALAMARES_VERSION_MINOR -e CALAMARES_VERSION_PATCH | grep -o "[[:digit:]]*" | xargs)"
+	_gitver=".r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	_patchver="$(cat CMakeLists.txt | grep -m3 -e CALAMARES_VERSION_PATCH | grep -o "[[:digit:]]*" | xargs)"
+	sed -i -e "s|CALAMARES_VERSION_PATCH $_patchver|CALAMARES_VERSION_PATCH $_patchver$_gitver|g" CMakeLists.txt
+
+	#this is optional to have also a pkgver like '1.1.4.r1502.5456ed3-1'
+	#echo -e "${_ver// /.}${_gitver}"
+
+	#this seems not to work with 'buildpkg'
+	#git submodule init
+	#git submodule update
+
+	mkdir -p src/modules/partition/
+	cd src/modules/partition/
+	git clone https://github.com/calamares/partitionmanager.git
+	cd partitionmanager
+	git checkout calamares
+
+	rm -rf ${srcdir}/calamares/.git
+	rm -rf ${srcdir}/$pkgname-netrunner-rolling
 }
 
 build() {
-	cd "$srcdir/calamares-$pkgver"
-
+	cd "$srcdir/$pkgname"
+	
 	mkdir -p build
 	cd build
         cmake .. \
@@ -43,16 +64,15 @@ build() {
 }
 
 package() {
-	cd "$srcdir/calamares-$pkgver/build"
-
+	cd "$srcdir/$pkgname"/build
+	
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
-	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/services.conf"
-	install -Dm644 "../conf/settings.conf" "$pkgdir/usr/share/calamares/settings.conf"
+	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/modules/services.conf"
 	install -Dm644 "../conf/unpackfs.conf" "$pkgdir/usr/share/calamares/modules/unpackfs.conf"
-	mkdir -p /usr/share/icons/
-	install -Dm644 "../data/calamares.png" "$pkgdir/usr/share/icons/calamares.png"
+	install -Dm644 "../conf/settings.conf" "$pkgdir/usr/share/calamares/settings.conf"
+	install -Dm644 "../data/calamares-netrunner.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/calamares-netrunner.png"
 	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
 	rm -r "$pkgdir/usr/lib/calamares/modules/dummyprocess/"
 	rm -r "$pkgdir/usr/lib/calamares/modules/dummypython/"

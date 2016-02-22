@@ -1,0 +1,17 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-desktop-panel
+pkgver=5.5.2
+pkgrel=3
+pkgdesc="A Plasma 5 desktop panel for Netrunner"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-desktop-panel'
+license=('GPL')
+groups=('kde')
+depends=('expanding-icons-taskmanager')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-desktop-panel')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-desktop-panel
+    cp -aR usr $pkgdir/
+}

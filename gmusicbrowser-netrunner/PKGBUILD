@@ -4,8 +4,8 @@
 # moidified by AJSlye for netrunnner filterfun layout
 
 pkgname=gmusicbrowser-netrunner
-pkgver=1.1.14
-pkgrel=1
+pkgver=1.1.15
+pkgrel=6
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -16,6 +16,7 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'mpg321: mp3 support for the ALSA backend'
             'vorbis-tools: vorbis support for the ALSA backend'
             'mplayer: enables the mplayer backend'
+	    'mpv: enables the mpv backend'
 	    'gstreamer: enables the gstreamer backend'
             'perl-glib-object-introspection: enables the gstreamer backend'
             'gst-plugins-base: vorbis support for the gstreamer backend' 
@@ -39,7 +40,7 @@ conflicts=('gmusicbrowser' 'gmusicbrowser-devel' 'gmusicbrowser-development' 'gm
 options=('!libtool')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz)
-md5sums=('fbdf48aedb17876ee0d5da8b52fafcd2')
+md5sums=('SKIP')
 
 package() {
   cd "$srcdir"/gmusicbrowser-$pkgver
@@ -49,6 +50,6 @@ package() {
   # put some images in sane locations
   install -Dm644 pix/trayicon.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/gmusicbrowser.png
   install -Dm644 pix/gmusicbrowser32x32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/gmusicbrowser.png
-  install -Dm644 pix/gmusicbrowser.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/gmusicbrowser.png
-  install -Dm644 pix/gmusicbrowser.png "$pkgdir"/usr/share/pixmaps/gmusicbrowser.png
+  install -Dm644 pix/gmusicbrowser.svg "$pkgdir"/usr/share/icons/hicolor/48x48/apps/gmusicbrowser.svg
+  install -Dm644 pix/gmusicbrowser.svg "$pkgdir"/usr/share/pixmaps/gmusicbrowser.svg
 }

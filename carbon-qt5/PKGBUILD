@@ -1,6 +1,6 @@
 # Maintainer: Leszek Lesner <leszek@zevenos.com>
 pkgname=carbon-qt5
-pkgver=0
+pkgver=1.0
 pkgrel=1
 pkgdesc="mod of Oxygen Widget Style for Qt"
 arch=('i686' 'x86_64')

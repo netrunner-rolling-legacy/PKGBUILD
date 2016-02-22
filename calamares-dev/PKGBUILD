@@ -1,0 +1,58 @@
+pkgname=calamares-dev
+pkgver=2.0rc1
+pkgrel=1
+pkgdesc='Distribution-independent installer framework (development version)'
+arch=('i686' 'x86_64')
+license=(GPL)
+url="https://github.com/calamares"
+license=('LGPL')
+conflicts=('calamares')
+provides=('calamares')
+install=calamares.install
+depends=('kconfig' 'kcoreaddons' 'ki18n' 'solid' 'yaml-cpp' 'kpmcore'
+         'boost-libs' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gptfdisk' 'gtk-update-icon-cache')
+makedepends=('extra-cmake-modules' 'qt5-tools' 'git' 'boost')
+backup=('usr/share/calamares/modules/bootloader.conf'
+        'usr/share/calamares/modules/displaymanager.conf'
+        'usr/share/calamares/modules/initcpio.conf'
+        'usr/share/calamares/modules/unpackfs.conf')
+
+source=("https://calamares.io/downloads/calamares-2.0-rc1.tar.gz"
+        'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling')
+
+sha1sums=('d564c83107113e5fd7f595e6230bae94057e2ed2'
+         'SKIP')
+
+
+prepare() {
+		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares-2.0-rc1"
+		rm -rf "$srcdir/calamares-2.0-rc1/.git"
+}
+
+build() {
+	cd ${srcdir}/calamares-2.0-rc1
+	mkdir -p build
+	cd build
+        cmake .. \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX=/usr \
+              -DCMAKE_INSTALL_LIBDIR=lib \
+              -DSKIP_MODULES="webview interactiveterminal"
+        make
+}
+
+package() {
+	cd ${srcdir}/calamares-2.0-rc1/build
+	make DESTDIR="$pkgdir" install
+	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
+	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
+	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/modules/services.conf"
+	install -Dm644 "../conf/unpackfs.conf" "$pkgdir/usr/share/calamares/modules/unpackfs.conf"
+	install -Dm644 "../conf/settings.conf" "$pkgdir/usr/share/calamares/settings.conf"
+	install -Dm644 "../data/calamares-netrunner.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/calamares-netrunner.png"
+	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
+	rm -r "$pkgdir/usr/share/icons/hicolor/scalable"
+	rm -r "$pkgdir/usr/lib/calamares/modules/dummyprocess/"
+	rm -r "$pkgdir/usr/lib/calamares/modules/dummypython/"
+	rm "$pkgdir/usr/share/calamares/modules/dummypython.conf"
+}

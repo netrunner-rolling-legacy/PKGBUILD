@@ -1,6 +1,6 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=desktop-theme-enlightenment
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="The Enlightenment desktop theme for the Plasma desktop"
 arch=('any')

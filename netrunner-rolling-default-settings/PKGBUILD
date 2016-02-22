@@ -1,0 +1,22 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-rolling-default-settings
+pkgver=2.0
+pkgrel=1
+pkgdesc="Default settings for Plasma and Applications for Netrunner"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-rolling-default-settings'
+license=('GPL')
+groups=('kde')
+backup=('etc/sddm.conf')
+replaces=('netrunner-rolling-default-settings-2015.09' 'netrunner-rolling-default-settings-2015.10')
+depends=('bluex-lnf-theme' 'carbon-gtk2' 'carbon-gtk3' 'carbon-qt4' 'carbon-qt5' 'netrunner-artwork-sounds' 'netrunner-lnf-theme' 'netrunner-rolling-system-settings')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-rolling-default-settings')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-rolling-default-settings
+  cp -aR etc $pkgdir/
+  cp -aR usr $pkgdir/
+  mkdir -p "$pkgdir/etc/skel/.local/share/RecentDocuments"
+  mkdir -p "$pkgdir/etc/skel/.mpd/playlists"
+}

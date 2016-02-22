@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-sddm-theme
+pkgver=1.5
+pkgrel=1
+pkgdesc="The Netrunner Plasma Look and Feel Plasma 5 theme"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-sddm-theme'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-sddm-theme')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-sddm-theme
+  cp -aR usr $pkgdir/
+}

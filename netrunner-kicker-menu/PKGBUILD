@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-kicker-menu
+pkgver=5.5.2
+pkgrel=1
+pkgdesc="This Netrunner kicker menu addition for Plasma 5"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-kicker-menu'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-kicker-menu')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-kicker-menu
+    cp -aR usr $pkgdir/
+}

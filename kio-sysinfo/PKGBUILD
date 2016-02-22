@@ -8,7 +8,7 @@
 
 pkgname=kio-sysinfo
 pkgver=1366846
-pkgrel=3
+pkgrel=7
 pkgdesc="KDE IO Slave, sysinfo:/, to display system infomation in konqueror"
 arch=('i686' 'x86_64')
 url="http://websvn.kde.org/trunk/playground/base/kio_sysinfo"

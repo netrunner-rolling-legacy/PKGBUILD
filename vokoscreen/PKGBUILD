@@ -2,7 +2,7 @@
 
 pkgname=vokoscreen
 numver=201303021707
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Desktop Recorder, GUI ffmpeg based on Qt4 libriaries."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('pulseaudio' 'alsa-utils')
 #options=('!strip')
 license=('GPL2')
 install=${pkgname}.install
-md5sums=('21791c2f0170e9a058ddcbf47385b5a1' '027efd4ee6f24da7af118f6f99ef5909')
+md5sums=('ac15692a0802d5310a98ac54b922fb6b' '027efd4ee6f24da7af118f6f99ef5909')
 
 build() {
 #  cd "${srcdir}/recipe-{debversion}"

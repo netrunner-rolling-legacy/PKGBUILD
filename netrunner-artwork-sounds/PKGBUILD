@@ -1,0 +1,18 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-artwork-sounds
+pkgver=1.0
+pkgrel=1
+pkgdesc="Default Sounds for Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-artwork-sounds'
+license=('GPL')
+groups=('kde')
+replaces=(netrunner-artwork-sounds-2015.06)
+depends=(plasma-workspace)
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-artwork-sounds')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-artwork-sounds
+  cp -aR usr $pkgdir/
+}

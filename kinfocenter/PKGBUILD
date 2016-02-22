@@ -4,8 +4,8 @@
 # Contributor: Antonio Rojas
 
 pkgname=kinfocenter
-pkgver=5.3.2
-pkgrel=5
+pkgver=5.5.4
+pkgrel=2
 pkgdesc='A utility that provides information about a computer system'
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/system/kinfocenter/'
@@ -15,20 +15,15 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework')
 conflicts=('kdebase-workspace')
 groups=('plasma')
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
+#source=("http://download.kde.org/unstable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
         'netrunner-rolling-logo.svg'
-        'kcm-about-distrorc'
-        'rb123995.patch')
-md5sums=('baf95f4bd09e886f3d25b5f2799cf2d8'
+        'kcm-about-distrorc')
+md5sums=('4eddff6767cf1a2d47b6ddf711a4655e'
          'cd6c97760883ccf780e0bbdd926fbb01'
-         '8b2ef8505794c3baf2f3c1895043ba37'
-         '49c0f1480d57dc66c43322539a4c337a')
+         '8b2ef8505794c3baf2f3c1895043ba37')
 
 prepare() {
   mkdir -p build
-  # BUG: 344971 
-  # https://bugs.kde.org/show_bug.cgi?id=344971
-  # https://git.reviewboard.kde.org/r/123995/
-  patch -p1 -i "$srcdir"/rb123995.patch
 }
 
 build() {
@@ -46,7 +41,7 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 
-# Install Arch logo
+# Install Netrunner logo
   install -Dm644 "$srcdir"/netrunner-rolling-logo.svg "$pkgdir"/usr/share/about-distro/netrunner-rolling-logo.svg
   install -Dm644 "$srcdir"/kcm-about-distrorc "$pkgdir"/etc/xdg/kcm-about-distrorc
 }

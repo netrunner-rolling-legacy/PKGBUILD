@@ -1,0 +1,18 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-artwork-thunderbird
+pkgver=1.0
+pkgrel=1
+pkgdesc="Netrunner Thunderbird profile with artwork"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-artwork-thunderbird'
+license=('GPL')
+groups=('kde')
+replaces=(netrunner-artwork-thunderbird-2015.09)
+depends=(thunderbird-kde)
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-artwork-thunderbird')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-artwork-thunderbird
+  cp -aR etc $pkgdir/
+}
