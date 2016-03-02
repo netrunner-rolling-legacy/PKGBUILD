@@ -1,0 +1,16 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-rolling-wallpapers-extra-arti-one
+pkgver=1.0
+pkgrel=1
+pkgdesc="Extra Arti One Wallpapers from Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-rolling-wallpapers-extra-arti-one'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-rolling-wallpapers-extra-arti-one')
+md5sums=('SKIP')
+package() {
+  cd $srcdir/netrunner-rolling-wallpapers-extra-arti-one
+  cp -aR usr $pkgdir/
+}
