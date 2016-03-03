@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.13.0
-pkgrel=5
+pkgrel=3
 _git=ef7b3177adb3673a482c68cb62281cd9a5ca8e8d
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
