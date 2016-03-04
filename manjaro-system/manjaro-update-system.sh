@@ -42,21 +42,6 @@ detectDE()
 }
 
 post_upgrade() {
-
-        # fix issue with existing sddm.conf
-	if [ "$(vercmp $2 20160301)" -lt 0 ]; then
-		pacman -Qq sddm &> /tmp/cmd1
-		pacman -Q sddm &> /tmp/cmd2
-		if [ "$(grep 'sddm' /tmp/cmd1)" == "sddm" ] && \
-			[ "$(cat /tmp/cmd2 | cut -d" " -f2 | sed -e 's/\.//g' | sed -e 's/\-//g')" -lt "013023" ]; then
-			msg "Fix sddm ..."
-			rm /var/lib/pacman/db.lck &> /dev/null
-			mv /etc/sddm.conf /etc/sddm.backup
-			pacman --noconfirm -S sddm
-			mv /etc/sddm.conf /etc/sddm.conf.pacnew
-			mv /etc/sddm.backup /etc/sddm.conf
-		fi
-	fi
 	
 	# fix xfprogs version
 	export LANG=C
@@ -642,3 +627,4 @@ post_upgrade() {
 		rm /var/lib/manjaro-system/version
 	fi
 }
+ 
