@@ -1,5 +1,5 @@
 pkgname=calamares
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Distribution-independent installer framework (development version)'
 arch=('i686' 'x86_64')
@@ -17,20 +17,20 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
-source=("https://github.com/calamares/calamares/releases/download/v2.0/calamares-2.0.tar.gz"
+source=("https://github.com/calamares/calamares/releases/download/v2.1/calamares-2.1.tar.gz"
         'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling')
 
-sha1sums=('90f8179f48fabc6bbe65fb16aecb2ed7bbf6a0df'
+sha1sums=('cfcb571b013d9477fe095b2ef886a796bf6c6d9b'
          'SKIP')
 
 
 prepare() {
-		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares-2.0"
-		rm -rf "$srcdir/calamares-2.0/.git"
+		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares-2.1"
+		rm -rf "$srcdir/calamares-2.1/.git"
 }
 
 build() {
-	cd ${srcdir}/calamares-2.0
+	cd ${srcdir}/calamares-2.1
 	mkdir -p build
 	cd build
         cmake .. \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/calamares-2.0/build
+	cd ${srcdir}/calamares-2.1/build
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"

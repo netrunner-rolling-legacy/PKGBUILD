@@ -1,10 +1,11 @@
 # $Id: PKGBUILD 253135 2015-12-07 01:07:19Z foutrelis $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Packager: AJSlye ,jameskittsmiller@gmail.com>
 
 pkgname=sddm
 pkgver=0.13.0
-pkgrel=3
+pkgrel=5
 _git=ef7b3177adb3673a482c68cb62281cd9a5ca8e8d
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
@@ -17,8 +18,10 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm')
 provides=('display-manager')
 source=(#"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
-        ${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/sddm/sddm/archive/$_git.zip)
-md5sums=('SKIP')
+        ${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/sddm/sddm/archive/$_git.zip
+         sddm.conf)
+md5sums=('SKIP'
+         'SKIP')
 
 prepare() {
   mkdir -p build
@@ -40,6 +43,7 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 
-# Install Netrunner logo
-  rm -r "$pkgdir/etc/sddm.conf"
+# Install Netrunner sddm.conf
+  install -Dm755 "${srcdir}"/sddm.conf \
+  "${pkgdir}"/etc/sddm.conf
 }
