@@ -1,0 +1,38 @@
+# $Id$
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Antonio Rojas
+
+pkgname=kcm-plasma-services
+pkgver=5.5.5
+pkgrel=1
+pkgdesc='Easily turn on/off certain Plasma Services'
+arch=('i686' 'x86_64')
+url='https://github.com/netrunner-common-extras/kcm-plasma-services'
+license=('LGPL')
+depends=('baloo' 'ki18n' 'kio' 'kconfigwidgets' 'kcoreaddons' 'kxmlgui' 'qt5-base')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
+conflicts=('kdebase-workspace')
+groups=('plasma')
+source=('git://github.com/netrunner-common-extras/kcm-plasma-services')
+md5sums=('SKIP')
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${pkgname} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="${pkgdir}" install
+}

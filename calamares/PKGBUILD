@@ -1,5 +1,5 @@
 pkgname=calamares
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Distribution-independent installer framework (development version)'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ backup=('usr/share/calamares/modules/bootloader.conf'
 source=("https://github.com/calamares/calamares/releases/download/v2.1/calamares-2.1.tar.gz"
         'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling')
 
-sha1sums=('cfcb571b013d9477fe095b2ef886a796bf6c6d9b'
+sha1sums=('628119c94741fe5d7a75720069f6d0875580f949'
          'SKIP')
 
 

@@ -4,8 +4,8 @@
 # Contributor: Antonio Rojas
 
 pkgname=kinfocenter
-pkgver=5.5.4
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='A utility that provides information about a computer system'
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/system/kinfocenter/'
@@ -18,7 +18,7 @@ source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz
 #source=("http://download.kde.org/unstable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
         'netrunner-rolling-logo.svg'
         'kcm-about-distrorc')
-md5sums=('4eddff6767cf1a2d47b6ddf711a4655e'
+md5sums=('a9bc4c9ba6bee7873e8f2a2396fcc5c5'
          'cd6c97760883ccf780e0bbdd926fbb01'
          '8b2ef8505794c3baf2f3c1895043ba37')
 

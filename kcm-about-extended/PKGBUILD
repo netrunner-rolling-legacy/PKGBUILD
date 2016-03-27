@@ -1,0 +1,43 @@
+# $Id$
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Antonio Rojas
+
+pkgname=kcm-about-extended
+pkgver=5.5.5
+pkgrel=1
+pkgdesc='Extended information to replace kio-sysinfo'
+arch=('i686' 'x86_64')
+url='https://github.com/netrunner-common-extras/kcm-about-extended'
+license=('LGPL')
+depends=('kinfocenter' 'kwin' 'networkmanager-qt')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
+conflicts=('kdebase-workspace')
+groups=('plasma')
+source=('git://github.com/netrunner-common-extras/kcm-about-extended'
+       'kcm-about-extendedrc')
+md5sums=('SKIP'
+         'SKIP')
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../${pkgname} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="${pkgdir}" install
+
+# Install Netrunner logo
+  install -Dm644 "$srcdir"/kcm-about-extendedrc "$pkgdir"/etc/xdg/kcm-about-extendedrc
+}
