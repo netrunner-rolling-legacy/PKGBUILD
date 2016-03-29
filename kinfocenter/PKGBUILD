@@ -18,7 +18,7 @@ source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz
 #source=("http://download.kde.org/unstable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
         'netrunner-rolling-logo.svg'
         'kcm-about-distrorc')
-md5sums=('a9bc4c9ba6bee7873e8f2a2396fcc5c5'
+md5sums=('b9d0af1be03f5511616063bd01906423'
          'cd6c97760883ccf780e0bbdd926fbb01'
          '8b2ef8505794c3baf2f3c1895043ba37')
 
