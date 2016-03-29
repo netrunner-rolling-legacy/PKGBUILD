@@ -1,7 +1,7 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-desktop-panel
-pkgver=5.5.2
-pkgrel=3
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="A Plasma 5 desktop panel for Netrunner"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-desktop-panel'

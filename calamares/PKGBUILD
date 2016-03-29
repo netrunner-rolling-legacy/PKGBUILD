@@ -17,7 +17,7 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
-source=("https://github.com/calamares/calamares/releases/download/v2.1/calamares-2.1.tar.gz"
+source=("https://github.com/calamares/calamares/releases/download/v2.2/calamares-2.2.tar.gz"
         'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling')
 
 sha1sums=('628119c94741fe5d7a75720069f6d0875580f949'
@@ -25,12 +25,12 @@ sha1sums=('628119c94741fe5d7a75720069f6d0875580f949'
 
 
 prepare() {
-		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares-2.1"
-		rm -rf "$srcdir/calamares-2.1/.git"
+		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares-2.2"
+		rm -rf "$srcdir/calamares-2.2/.git"
 }
 
 build() {
-	cd ${srcdir}/calamares-2.1
+	cd ${srcdir}/calamares-2.2
 	mkdir -p build
 	cd build
         cmake .. \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/calamares-2.1/build
+	cd ${srcdir}/calamares-2.2/build
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"

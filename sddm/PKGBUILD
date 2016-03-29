@@ -15,7 +15,8 @@ depends=('qt5-declarative' 'llvm-libs')
 makedepends=('cmake' 'python-docutils' 'qt5-tools')
 install="${pkgname}.install"
 backup=('usr/share/sddm/scripts/Xsetup'
-        'etc/pam.d/sddm')
+        'etc/pam.d/sddm'
+        'etc/sddm.conf')
 provides=('display-manager')
 source=(#"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/sddm/sddm/archive/$_git.zip
