@@ -8,7 +8,7 @@ url='https://github.com/netrunner-rolling/netrunner-rolling-wallpapers-extra'
 license=('GPL')
 groups=('kde')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-rolling-wallpapers-extra')
+source=('git://github.com/netrunner-artwork/netrunner-extra-wallpapers#branch=netrunner-17')
 md5sums=('SKIP')
 package() {
   cd $srcdir/netrunner-rolling-wallpapers-extra
