@@ -1,0 +1,23 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-settings-firefox
+pkgver=1.0
+pkgrel=1
+pkgdesc="Netrunner Firefox profile with artwork"
+arch=('any')
+url='https://github.com/netrunner-common/netrunner-settings-firefox'
+license=('GPL')
+groups=('kde')
+depends=(firefox-kde)
+replaces=(netrunner-artwork-firefox-2015.09, netrunner-artwork-firefox)
+makedepends=('git')
+source=('git://github.com/netrunner-common/netrunner-settings-firefox')
+md5sums=('SKIP')
+
+pkgver() {
+    date +%Y.%m
+}
+
+package() {
+  cd $srcdir/netrunner-settings-firefox
+  cp -aR etc $pkgdir/
+}
