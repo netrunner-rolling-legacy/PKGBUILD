@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=kcm-about-extended
-pkgver=5.6.1
+pkgver=5.6.3
 pkgrel=1
 pkgdesc='Extended information to replace kio-sysinfo'
 arch=('i686' 'x86_64')

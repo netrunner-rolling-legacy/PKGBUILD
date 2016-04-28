@@ -4,12 +4,12 @@ pkgver=2.0
 pkgrel=1
 pkgdesc="The Enlightenment desktop theme for the Plasma desktop"
 arch=('any')
-url='https://github.com/netrunner-rolling/desktop-theme-enlightenment'
+url='https://github.com/netrunner-artwork/desktop-theme-enlightenment'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/desktop-theme-enlightenment')
+source=('git://github.com/netrunner-artwork/desktop-theme-enlightenment')
 md5sums=('SKIP')
 package() {
   cd $srcdir/desktop-theme-enlightenment

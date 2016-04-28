@@ -4,12 +4,12 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="The Eclipse desktop theme for the Plasma desktop"
 arch=('any')
-url='https://github.com/netrunner-rolling/desktop-theme-eclipse'
+url='https://github.com/netrunner-artwork/desktop-theme-eclipse'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/desktop-theme-eclipse')
+source=('git://github.com/netrunner-artwork/desktop-theme-eclipse')
 md5sums=('SKIP')
 package() {
   cd $srcdir/desktop-theme-eclipse

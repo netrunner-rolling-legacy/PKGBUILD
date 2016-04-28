@@ -4,12 +4,12 @@ pkgver=2.0
 pkgrel=1
 pkgdesc="The carbon aurorae theme for the Plasma desktop"
 arch=('any')
-url='https://github.com/netrunner-rolling/aurorae-theme-carbon'
+url='https://github.com/netrunner-artwork/aurorae-theme-carbon'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/aurorae-theme-carbon')
+source=('git://github.com/netrunner-artwork/aurorae-theme-carbon')
 md5sums=('SKIP')
 package() {
   cd $srcdir/aurorae-theme-carbon

@@ -4,12 +4,12 @@ pkgver=2.0
 pkgrel=2
 pkgdesc="The Blue X desktop theme for the Plasma 5"
 arch=('any')
-url='https://github.com/netrunner-rolling/desktop-theme-blue-x'
+url='https://github.com/netrunner-artwork/desktop-theme-blue-x'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/desktop-theme-blue-x')
+source=('git://github.com/netrunner-artwork/desktop-theme-blue-x')
 md5sums=('SKIP')
 package() {
   cd $srcdir/desktop-theme-blue-x

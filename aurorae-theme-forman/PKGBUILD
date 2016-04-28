@@ -4,12 +4,12 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="The forman aurorae theme for the Plasma desktop"
 arch=('any')
-url='https://github.com/netrunner-rolling/aurorae-theme-forman'
+url='https://github.com/netrunner-artwork/aurorae-theme-forman'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/aurorae-theme-forman')
+source=('git://github.com/netrunner-artwork/aurorae-theme-forman')
 md5sums=('SKIP')
 package() {
   cd $srcdir/aurorae-theme-forman

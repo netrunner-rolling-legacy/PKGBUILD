@@ -4,12 +4,12 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="The Windows 7 aurorae theme for the Plasma desktop"
 arch=('any')
-url='https://github.com/netrunner-rolling/aurorae-theme-win7'
+url='https://github.com/netrunner-artwork/aurorae-theme-win7'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/aurorae-theme-win7')
+source=('git://github.com/netrunner-artwork/aurorae-theme-win7')
 md5sums=('SKIP')
 package() {
   cd $srcdir/aurorae-theme-win7

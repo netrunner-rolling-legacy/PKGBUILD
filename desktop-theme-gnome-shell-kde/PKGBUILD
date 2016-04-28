@@ -4,12 +4,12 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="The GNOME-Shell-KDE desktop theme for the Plasma desktop"
 arch=('any')
-url='https://github.com/netrunner-rolling/desktop-theme-gnome-shell-kde'
+url='https://github.com/netrunner-artwork/desktop-theme-gnome-shell-kde'
 license=('GPL')
 groups=('kde')
 depends=(plasma-workspace)
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/desktop-theme-gnome-shell-kde')
+source=('git://github.com/netrunner-artwork/desktop-theme-gnome-shell-kde')
 md5sums=('SKIP')
 package() {
   cd $srcdir/desktop-theme-gnome-shell-kde
