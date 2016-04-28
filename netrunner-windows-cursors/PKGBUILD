@@ -4,10 +4,10 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Windows cursors for Netrunner Rolling"
 arch=('any')
-url='https://github.com/netrunner-rolling/netrunner-windows-cursors'
+url='https://github.com/netrunner-artwork/netrunner-windows-cursors'
 license=('GPL')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-windows-cursors.git')
+source=('git://github.com/netrunner-artwork/netrunner-windows-cursors.git')
 md5sums=('SKIP')
 package() {
   cd $srcdir/netrunner-windows-cursors

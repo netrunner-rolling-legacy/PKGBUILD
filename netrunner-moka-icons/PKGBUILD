@@ -4,10 +4,10 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Moka icon theme for Netrunner Rolling"
 arch=('any')
-url='https://github.com/netrunner-rolling/netrunner-moka-icons'
+url='https://github.com/netrunner-artwork/netrunner-moka-icons'
 license=('GPL')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-moka-icons.git')
+source=('git://github.com/netrunner-artwork/netrunner-moka-icons.git')
 md5sums=('SKIP')
 package() {
   cd $srcdir/netrunner-moka-icons
