@@ -12,6 +12,6 @@ makedepends=('git')
 source=('git://github.com/netrunner-artwork/netrunner-extra-wallpapers#branch=netrunner-17')
 md5sums=('SKIP')
 package() {
-  cd $srcdir/netrunner-rolling-wallpapers-extra
+  cd $srcdir/netrunner-extra-wallpapers
   cp -aR usr $pkgdir/
 }
