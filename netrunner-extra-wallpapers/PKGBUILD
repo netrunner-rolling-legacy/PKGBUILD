@@ -9,7 +9,7 @@ license=('GPL')
 groups=('kde')
 replaces=('netrunner-rolling-wallpapers-extra')
 makedepends=('git')
-source=('git://github.com/netrunner-artwork/netrunner-extra-wallpapers#branch=rolling-2016.01')
+source=('git://github.com/netrunner-artwork/netrunner-extra-wallpapers#branch=2016.01')
 md5sums=('SKIP')
 package() {
   cd $srcdir/netrunner-extra-wallpapers
