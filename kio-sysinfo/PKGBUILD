@@ -16,7 +16,7 @@ license=('GPL')
 depends=('kdelibs')
 makedepends=('git' 'cmake' 'automoc4')
 optdepends=('acpi: to display CPU temperature')
-source=('git://github.com/netrunner/kio-sysinfo')
+source=('git://github.com/netrunner-extras/kio-sysinfo')
 md5sums=('SKIP')
 
 build() {

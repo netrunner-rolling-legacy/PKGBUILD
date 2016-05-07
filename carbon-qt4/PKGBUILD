@@ -4,12 +4,12 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="mod of Oxygen Widget Style for Qt"
 arch=('i686' 'x86_64')
-url='https://github.com/netrunner-common-extras/carbon-qt.git'
+url='https://github.com/netrunner-extras/carbon-qt.git'
 license=('GPL')
 groups=('kde')
 depends=('libxcb' 'kdelibs' 'libx11')
 makedepends=('cmake' 'git' 'automoc4')
-source=('git://github.com/netrunner-common-extras/carbon-qt.git')
+source=('git://github.com/netrunner-extras/carbon-qt.git')
 md5sums=('SKIP')
 
 pkgver() {
