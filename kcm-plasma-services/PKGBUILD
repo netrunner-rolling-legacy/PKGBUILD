@@ -32,6 +32,10 @@ build() {
   make
 }
 
+pkgver() {
+    date +%Y.%m
+}
+
 package() {
   cd build
   make DESTDIR="${pkgdir}" install

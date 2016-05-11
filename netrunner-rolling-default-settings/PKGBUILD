@@ -1,7 +1,7 @@
 # Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-rolling-default-settings
-pkgver=2.0
-pkgrel=5
+pkgver=1.0
+pkgrel=1
 pkgdesc="Default settings for Plasma and Applications for Netrunner"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-rolling-default-settings'
@@ -13,6 +13,11 @@ depends=('bluex-lnf-theme' 'carbon-gtk2' 'carbon-gtk3' 'carbon-qt4' 'carbon-qt5'
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-rolling-default-settings')
 md5sums=('SKIP')
+
+pkgver() {
+    date +%Y.%m
+}
+
 package() {
   cd $srcdir/netrunner-rolling-default-settings
   cp -aR etc $pkgdir/
