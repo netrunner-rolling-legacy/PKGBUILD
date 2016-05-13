@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('plasma-desktop')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework')
 groups=('plasma')
-source=("git://github.com/netrunner/netrunner-desktop-containment#branch=plasma5.5")
+source=("git://github.com/netrunner-common/netrunner-desktop-containment#branch=plasma5.5")
 md5sums=('SKIP')
 build() {
   cd ${srcdir}/${pkgname}
@@ -27,6 +27,10 @@ build() {
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
+}
+
+pkgver() {
+    date +%Y.%m
 }
 
 package() {
