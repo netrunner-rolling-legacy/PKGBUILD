@@ -1,0 +1,21 @@
+# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
+pkgname=netrunner-wallpapers-extrapack-2
+pkgver=1.0
+pkgrel=1
+pkgdesc="Extra Wallpapers for Netrunner"
+arch=('any')
+url='https://github.com/netrunner-artwork/netrunner-wallpapers-extrapack-2'
+license=('GPL')
+groups=('kde')
+makedepends=('git')
+source=('git://github.com/netrunner-artwork/netrunner-wallpapers-extrapack-2#branch=2016.01')
+md5sums=('SKIP')
+
+pkgver() {
+    date +%Y.%m
+}
+
+package() {
+  cd $srcdir/netrunner-wallpapers-extrapack-2
+  cp -aR usr $pkgdir/
+}
