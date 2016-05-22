@@ -17,7 +17,7 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
 source=(git+https://github.com/calamares/calamares.git#branch=2.2.x-stable
-        git+https://github.com/netrunner-rolling/calamares-netrunner-rolling)
+        git+https://github.com/netrunner-rolling/calamares-netrunner-rolling#branch=2.2.x-stable)
 
 sha1sums=('SKIP'
          'SKIP')
