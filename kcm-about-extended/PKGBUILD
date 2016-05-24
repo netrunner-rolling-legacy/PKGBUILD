@@ -1,10 +1,5 @@
-# $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Antonio Rojas
-
 pkgname=kcm-about-extended
-pkgver=5.6.3
+pkgver=1.0
 pkgrel=1
 pkgdesc='Extended information to replace kio-sysinfo'
 arch=('i686' 'x86_64')
@@ -15,9 +10,11 @@ makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
 source=('git://github.com/netrunner-extras/kcm-about-extended'
-       'kcm-about-extendedrc')
+        'netrunner-rolling-logo.svg'
+        'kcm-about-extendedrc')
 md5sums=('SKIP'
-         'SKIP')
+         'cd6c97760883ccf780e0bbdd926fbb01'
+         '3119544d80ae4a9d215451527d50c6bc')
 
 prepare() {
   mkdir -p build
@@ -35,7 +32,8 @@ build() {
 }
 
 pkgver() {
-    date +%Y.%m
+cd "$srcdir/kcm-about-extended"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -43,5 +41,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
 # Install Netrunner logo
+  install -Dm644 "$srcdir"/netrunner-rolling-logo.svg "$pkgdir"/usr/share/about-distro/netrunner-rolling-logo.svg
   install -Dm644 "$srcdir"/kcm-about-extendedrc "$pkgdir"/etc/xdg/kcm-about-extendedrc
 }

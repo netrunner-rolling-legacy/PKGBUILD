@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=netrunner-desktop-containment
-pkgver=5.6.1
+pkgver=0
 pkgrel=1
 pkgdesc='The Netrunner Desktop containment'
 arch=('i686' 'x86_64')
@@ -30,7 +30,8 @@ build() {
 }
 
 pkgver() {
-    date +%Y.%m
+cd "$srcdir/netrunner-desktop-containment"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 package() {

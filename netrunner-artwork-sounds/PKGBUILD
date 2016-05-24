@@ -1,4 +1,3 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-artwork-sounds
 pkgver=1.0
 pkgrel=1
@@ -12,6 +11,12 @@ depends=(plasma-workspace)
 makedepends=('git')
 source=('git://github.com/netrunner-artwork/netrunner-artwork-sounds')
 md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/netrunner-artwork-sounds"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
 package() {
   cd $srcdir/netrunner-artwork-sounds
   cp -aR usr $pkgdir/

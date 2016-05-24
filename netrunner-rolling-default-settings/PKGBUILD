@@ -1,4 +1,3 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-rolling-default-settings
 pkgver=1.0
 pkgrel=1
@@ -9,13 +8,14 @@ license=('GPL')
 groups=('kde')
 backup=('etc/sddm.conf' 'etc/samba/smb.conf')
 replaces=('netrunner-rolling-default-settings-2015.09' 'netrunner-rolling-default-settings-2015.10')
-depends=('bluex-lnf-theme' 'carbon-gtk2' 'carbon-gtk3' 'carbon-qt4' 'carbon-qt5' 'netrunner-artwork-sounds' 'netrunner-lnf-theme' 'netrunner-rolling-system-settings')
+depends=('lnf-theme-bluex' 'carbon-gtk2' 'carbon-gtk3' 'carbon-qt4' 'carbon-qt5' 'netrunner-artwork-sounds' 'lnf-theme-netrunner' 'netrunner-rolling-system-settings')
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-rolling-default-settings')
 md5sums=('SKIP')
 
 pkgver() {
-    date +%Y.%m
+cd "$srcdir/netrunner-rolling-default-settings"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 package() {

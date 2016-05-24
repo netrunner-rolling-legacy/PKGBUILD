@@ -1,10 +1,5 @@
-# $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Antonio Rojas
-
 pkgname=kcm-plasma-services
-pkgver=5.6.3
+pkgver=1.0
 pkgrel=1
 pkgdesc='Easily turn on/off certain Plasma Services'
 arch=('i686' 'x86_64')
@@ -14,7 +9,7 @@ depends=('baloo' 'ki18n' 'kio' 'kconfigwidgets' 'kcoreaddons' 'kxmlgui' 'qt5-bas
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
-source=('git://github.com/netrunner-extras/kcm-plasma-services')
+source=('git://github.com/netrunner-extras/kcm-plasma-services#branch=netrunner18')
 md5sums=('SKIP')
 
 prepare() {
@@ -33,7 +28,8 @@ build() {
 }
 
 pkgver() {
-    date +%Y.%m
+cd "$srcdir/kcm-plasma-services"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 package() {

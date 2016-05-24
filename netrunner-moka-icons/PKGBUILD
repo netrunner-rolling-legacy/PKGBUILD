@@ -1,7 +1,6 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-moka-icons
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Moka icon theme for Netrunner Rolling"
 arch=('any')
 url='https://github.com/netrunner-artwork/netrunner-moka-icons'

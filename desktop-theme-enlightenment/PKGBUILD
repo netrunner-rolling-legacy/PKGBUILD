@@ -1,7 +1,6 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=desktop-theme-enlightenment
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Enlightenment desktop theme for the Plasma desktop"
 arch=('any')
 url='https://github.com/netrunner-artwork/desktop-theme-enlightenment'

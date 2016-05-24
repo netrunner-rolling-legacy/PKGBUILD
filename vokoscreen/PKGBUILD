@@ -3,19 +3,18 @@
 pkgname=vokoscreen
 numver=201303021707
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Recorder, GUI ffmpeg based on Qt4 libriaries."
 arch=('i686' 'x86_64')
 url="http://www.kohaupt-online.de/"
 depends=('qt4' 'ffmpeg' 'lame' 'mkvtoolnix-cli' 'opencv')
 makedepends=('cmake' 'automoc4' 'gcc')
-source=("https://github.com/vkohaupt/vokoscreen/archive/${pkgver}.tar.gz" $pkgname.install)
+source=("https://github.com/vkohaupt/vokoscreen/archive/${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/$pkgname-dev/$pkgname/ubuntu/pool/main/v/$pkgname/${pkgname}_${pkgver}-${pkgrel}#~precise1.tar.gz" $pkgname.install)
 optdepends=('pulseaudio' 'alsa-utils')
 #options=('!strip')
 license=('GPL2')
-install=${pkgname}.install
-md5sums=('ac15692a0802d5310a98ac54b922fb6b' '027efd4ee6f24da7af118f6f99ef5909')
+md5sums=('ac15692a0802d5310a98ac54b922fb6b')
 
 build() {
 #  cd "${srcdir}/recipe-{debversion}"

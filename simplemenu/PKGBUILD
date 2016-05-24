@@ -1,12 +1,11 @@
-# Maintainer: AJSlye ,jameskittsmiller@gmail.com>
 pkgname=simplemenu
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Menu for Plasma 5"
 arch=('i686' 'x86_64')
 license=('GPL')
 groups=('kde')
-depends=('kdelibs4support' 'kpeople' 'krunner' 'plasma-workspace' 'qt5-x11extras' 'qt5-base')
+depends=('kdelibs4support' 'kpeople' 'krunner' 'kdesignerplugin' 'plasma-workspace' 'qt5-x11extras' 'qt5-base')
 makedepends=('cmake' 'git' 'extra-cmake-modules' 'kdoctools')
 source=('git://anongit.kde.org/scratch/hein/simplemenu.git')
 md5sums=('SKIP')

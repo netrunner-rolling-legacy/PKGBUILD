@@ -1,0 +1,22 @@
+pkgname=lnf-theme-bluex
+pkgver=1.0
+pkgrel=1
+pkgdesc="The Netrunner Blue X Plasma 5 look and feel theme"
+arch=('any')
+url='https://github.com/netrunner-artwork/lnf-theme-bluex'
+license=('GPL')
+groups=('kde')
+depends=('desktop-theme-bluex' 'netrunner-desktop-containment' 'netrunner-desktop-panel' 'netrunner-sddm-theme' 'netrunner-wallpapers' 'netrunner-whiteclassicia-cursors')
+makedepends=('git')
+source=('git://github.com/netrunner-artwork/lnf-theme-bluex')
+md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/lnf-theme-bluex"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd $srcdir/lnf-theme-bluex
+    cp -aR usr $pkgdir/
+}

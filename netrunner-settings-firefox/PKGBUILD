@@ -1,4 +1,3 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-settings-firefox
 pkgver=1.0
 pkgrel=1
@@ -14,7 +13,8 @@ source=('git://github.com/netrunner-common/netrunner-settings-firefox')
 md5sums=('SKIP')
 
 pkgver() {
-    date +%Y.%m
+cd "$srcdir/netrunner-settings-firefox"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
 }
 
 package() {

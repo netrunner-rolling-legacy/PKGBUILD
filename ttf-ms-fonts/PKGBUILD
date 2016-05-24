@@ -4,8 +4,8 @@
 # Contributor: dale <dale@archlinux.org>
 
 pkgname=ttf-ms-fonts
-pkgver=2.0
-pkgrel=10
+pkgver=2.5
+pkgrel=1
 pkgdesc="Core TTF Fonts from Microsoft"
 arch=('any')
 url="http://corefonts.sourceforge.net/"

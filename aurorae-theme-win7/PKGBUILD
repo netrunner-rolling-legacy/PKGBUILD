@@ -1,7 +1,6 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=aurorae-theme-win7
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Windows 7 aurorae theme for the Plasma desktop"
 arch=('any')
 url='https://github.com/netrunner-artwork/aurorae-theme-win7'

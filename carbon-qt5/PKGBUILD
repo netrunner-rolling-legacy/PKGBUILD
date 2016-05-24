@@ -1,7 +1,7 @@
 # Maintainer: Leszek Lesner <leszek@zevenos.com>
 pkgname=carbon-qt5
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="mod of Oxygen Widget Style for Qt"
 arch=('i686' 'x86_64')
 url='https://github.com/netrunner-extras/carbon-qt.git'
@@ -28,7 +28,8 @@ build() {
 package() {
   cd $srcdir/carbon-qt/build 
   make DESTDIR=$pkgdir install
-  
-  mkdir -p $pkgdir/usr/lib/qt
-  mv $pkgdir/usr/lib/plugins $pkgdir/usr/lib/qt/
+
+# No Longer needed  
+#  mkdir -p $pkgdir/usr/lib/qt
+#  mv $pkgdir/usr/lib/plugins $pkgdir/usr/lib/qt/
 } 

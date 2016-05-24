@@ -1,4 +1,3 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-artwork-skype
 pkgver=1.0
 pkgrel=1
@@ -11,6 +10,12 @@ replaces=(netrunner-artwork-skype-2015.09)
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-artwork-skype')
 md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/netrunner-artwork-skype"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
 package() {
   cd $srcdir/netrunner-artwork-skype
   cp -aR etc $pkgdir/

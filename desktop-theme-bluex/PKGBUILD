@@ -1,7 +1,6 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=desktop-theme-bluex
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Blue X desktop theme for the Plasma 5"
 arch=('any')
 url='https://github.com/netrunner-artwork/desktop-theme-blue-x'

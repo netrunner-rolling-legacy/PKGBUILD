@@ -1,4 +1,3 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-wallpapers
 pkgver=1.0
 pkgrel=1
@@ -11,11 +10,6 @@ replaces=('netrunner-rolling-wallpapers-2015.10' 'netrunner-rolling-wallpapers')
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-wallpapers')
 md5sums=('SKIP')
-
-pkgver() {
-    date +%Y.%m
-}
-
 package() {
   cd $srcdir/netrunner-wallpapers
   cp -aR usr $pkgdir/

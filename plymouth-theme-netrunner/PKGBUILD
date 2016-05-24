@@ -5,13 +5,13 @@
 
 pkgname=plymouth-theme-netrunner
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Netrunner theme for plymouth"
 arch=('any')
 url="http://freedesktop.org/wiki/Software/Plymouth"
 license=('GPL')
 depends=('plymouth')
-#install=theme.install
+install=theme.install
 source=('anim-netrunner-logo.png'
         'animation.png'
         'box.png'

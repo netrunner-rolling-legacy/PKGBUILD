@@ -1,7 +1,6 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=aurorae-theme-gnome3
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Gnome3 aurorae theme for the Plasma desktop"
 arch=('any')
 url='https://github.com/netrunner-artwork/aurorae-theme-gnome3'

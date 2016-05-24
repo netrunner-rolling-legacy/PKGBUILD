@@ -1,8 +1,6 @@
-# Maintainer: AJSlye (jameskittsmiller@gmail.com) / Bernhard Landauer <oberon@manjaro.org>
-
 pkgname=plasma-wallpaper-snow
 pkgver=r5.89d9d94
-pkgrel=1
+pkgrel=2
 pkgdesc='Snowfall Live Wallpaper for KDE Plasma 5'
 arch=('i686' 'x86_64')
 license=('LGPL')

@@ -1,6 +1,5 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=netrunner-desktop-panel
-pkgver=5.6.1
+pkgver=0
 pkgrel=1
 pkgdesc="A Plasma 5 desktop panel for Netrunner"
 arch=('any')
@@ -11,6 +10,12 @@ depends=('expanding-icons-taskmanager')
 makedepends=('git')
 source=('git://github.com/netrunner-rolling/netrunner-desktop-panel')
 md5sums=('SKIP')
+
+pkgver() {
+cd "$srcdir/netrunner-desktop-panel"
+printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+}
+
 package() {
   cd $srcdir/netrunner-desktop-panel
     cp -aR usr $pkgdir/

@@ -1,7 +1,6 @@
-# Maintainer:James Kittsmiller <jameskittsmiller@gmail.com>
 pkgname=desktop-theme-sevenified
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Sevenified desktop theme for the Plasma desktop"
 arch=('any')
 url='https://github.com/netrunner-artwork/desktop-theme-sevenified'

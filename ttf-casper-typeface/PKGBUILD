@@ -1,6 +1,6 @@
 pkgname=ttf-casper-typeface
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 download="casper-${pkgver}-${pkgrel}.zip"
 pkgdesc="TTF fort Casper Typeface by Michael Chereda"
 arch=('any')

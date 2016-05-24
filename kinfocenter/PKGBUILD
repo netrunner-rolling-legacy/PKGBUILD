@@ -16,10 +16,8 @@ conflicts=('kdebase-workspace')
 groups=('plasma')
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
 #source=("http://download.kde.org/unstable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
-        'netrunner-rolling-logo.svg'
         'kcm-about-distrorc')
 md5sums=('28bfbc16d155be0e4a1b4de3dd42415a'
-         'cd6c97760883ccf780e0bbdd926fbb01'
          '8b2ef8505794c3baf2f3c1895043ba37')
 
 prepare() {
@@ -42,7 +40,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
 # Install Netrunner logo
-  install -Dm644 "$srcdir"/netrunner-rolling-logo.svg "$pkgdir"/usr/share/about-distro/netrunner-rolling-logo.svg
   install -Dm644 "$srcdir"/kcm-about-distrorc "$pkgdir"/etc/xdg/kcm-about-distrorc
 }
  

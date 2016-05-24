@@ -30,11 +30,12 @@ package() {
   cd $srcdir/expanding-icons-taskmanager/build 
   make DESTDIR=$pkgdir install
   
-  mkdir -p $pkgdir/usr/lib/qt
-  if [ -e $pkgdir/usr/lib64 ]; then
-    mv $pkgdir/usr/lib64/qml $pkgdir/usr/lib/qt/
-    rmdir $pkgdir/usr/lib64
-  else
-    mv $pkgdir/usr/lib/qml $pkgdir/usr/lib/qt/
-  fi
+#  No Longer needed
+#  mkdir -p $pkgdir/usr/lib/qt
+#  if [ -e $pkgdir/usr/lib64 ]; then
+#    mv $pkgdir/usr/lib64/qml $pkgdir/usr/lib/qt/
+#    rmdir $pkgdir/usr/lib64
+#  else
+#    mv $pkgdir/usr/lib/qml $pkgdir/usr/lib/qt/
+#  fi
 } 
