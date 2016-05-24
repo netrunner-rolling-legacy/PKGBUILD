@@ -6,6 +6,7 @@ arch=('any')
 url='https://github.com/netrunner-artwork/lnf-theme-netrunner'
 license=('GPL')
 groups=('kde')
+replaces=('netrunner-lnf-theme')
 depends=('desktop-theme-enlightenment' 'netrunner-desktop-containment' 'netrunner-desktop-panel' 'netrunner-sddm-theme' 'netrunner-wallpapers' 'netrunner-whiteclassicia-cursors')
 makedepends=('git')
 source=('git://github.com/netrunner-artwork/lnf-theme-netrunner')
