@@ -28,8 +28,7 @@ build() {
 }
 
 pkgver() {
-cd "$srcdir/kcm-plasma-services"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

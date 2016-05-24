@@ -1,5 +1,5 @@
 pkgname=netrunner-sddm-theme
-pkgver=0
+pkgver=1.0
 pkgrel=1
 pkgdesc="The Netrunner Plasma Look and Feel Plasma 5 theme"
 arch=('any')
@@ -11,8 +11,7 @@ source=('git://github.com/netrunner-rolling/netrunner-sddm-theme')
 md5sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/netrunner-sddm-theme"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

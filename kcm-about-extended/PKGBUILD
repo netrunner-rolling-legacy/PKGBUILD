@@ -5,7 +5,7 @@ pkgdesc='Extended information to replace kio-sysinfo'
 arch=('i686' 'x86_64')
 url='https://github.com/netrunner-extras/kcm-about-extended'
 license=('LGPL')
-depends=('kinfocenter' 'kwin' 'networkmanager-qt')
+depends=('kwin' 'networkmanager-qt')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
@@ -32,8 +32,7 @@ build() {
 }
 
 pkgver() {
-cd "$srcdir/kcm-about-extended"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

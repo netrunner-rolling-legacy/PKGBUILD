@@ -10,7 +10,7 @@ pkgdesc='The Netrunner Desktop containment'
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('plasma-desktop')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework')
+makedepends=('git' 'extra-cmake-modules' 'kdesignerplugin' 'kdoctools' 'python' 'plasma-framework')
 groups=('plasma')
 source=("git://github.com/netrunner-common/netrunner-desktop-containment#branch=plasma5.5")
 md5sums=('SKIP')
@@ -30,8 +30,7 @@ build() {
 }
 
 pkgver() {
-cd "$srcdir/netrunner-desktop-containment"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

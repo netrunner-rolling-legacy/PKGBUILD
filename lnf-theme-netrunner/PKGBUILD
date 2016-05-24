@@ -12,8 +12,7 @@ source=('git://github.com/netrunner-artwork/lnf-theme-netrunner')
 md5sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/lnf-theme-netrunner"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

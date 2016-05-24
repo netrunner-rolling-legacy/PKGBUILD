@@ -12,8 +12,7 @@ source=('git://github.com/netrunner-rolling/netrunner-desktop-panel')
 md5sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/netrunner-desktop-panel"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

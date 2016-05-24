@@ -14,8 +14,7 @@ source=('git://github.com/netrunner-rolling/netrunner-rolling-default-settings')
 md5sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/netrunner-rolling-default-settings"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {

@@ -13,8 +13,7 @@ source=('git://github.com/netrunner-common/netrunner-settings-firefox')
 md5sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/netrunner-settings-firefox"
-printf "0+git`date +%Y%m%d`.%s"  "$(git rev-parse --short HEAD)"
+date +%Y.%m.%d
 }
 
 package() {
