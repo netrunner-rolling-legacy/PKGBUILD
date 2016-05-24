@@ -1,5 +1,5 @@
 post_install() {
-  plymouth-set-default-theme --rebuild-initrd netruinner-logo
+  plymouth-set-default-theme --rebuild-initrd netrunner-logo
 }
 
 post_upgrade() {
