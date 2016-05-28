@@ -13,6 +13,7 @@ license=('LGPL')
 depends=('kcm-about-extended' 'kdelibs4support' 'kcmutils' 'pciutils' 'glu' 'libraw1394' 'kwayland')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework')
 conflicts=('kdebase-workspace')
+backup=('usr/share/about-distro/netrunner-rolling-logo.svg')
 groups=('plasma')
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
 #source=("http://download.kde.org/unstable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"

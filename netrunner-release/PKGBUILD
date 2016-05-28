@@ -1,5 +1,5 @@
 pkgname=netrunner-release
-pkgver=2016.05
+pkgver=2016.06
 pkgrel=1
 pkgdesc="Adds a Netrunner Rolling lsb-release file"
 arch=('any')
