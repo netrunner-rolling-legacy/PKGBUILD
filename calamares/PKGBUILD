@@ -47,9 +47,11 @@ package() {
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
 	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/modules/services.conf"
 	install -Dm644 "../conf/unpackfs.conf" "$pkgdir/usr/share/calamares/modules/unpackfs.conf"
+	install -Dm644 "../conf/users.conf" "$pkgdir/usr/share/calamares/modules/users.conf"
 	install -Dm644 "../conf/settings.conf" "$pkgdir/usr/share/calamares/settings.conf"
 	install -Dm644 "../data/calamares-netrunner.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/calamares-netrunner.png"
 	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
+	install -Dm755 "../data/calamares_polkit" "$pkgdir/usr/bin/calamares_polkit"
 	install -Dm644 "../data/49-nopasswd-calamares.rules" "$pkgdir/etc/polkit-1/rules.d/49-nopasswd-calamares.rules"
 	chmod 750      "$pkgdir"/etc/polkit-1/rules.d
 	rm -r "$pkgdir/usr/share/icons/hicolor/scalable"
