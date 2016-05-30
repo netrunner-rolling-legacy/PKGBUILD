@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/calamares/build
+	cd ${srcdir}/calamares-2.2.3/build
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"

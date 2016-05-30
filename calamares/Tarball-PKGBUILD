@@ -19,7 +19,7 @@ backup=('usr/share/calamares/modules/bootloader.conf'
 source=("https://github.com/calamares/calamares/releases/download/v2.2.3/calamares-2.2.3.tar.gz"
         'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling#branch=2.2.x-stable')
 
-sha1sums=('65c67810575445df725a61ca39ca07cf2b4b990d'
+sha1sums=('de89ec513a3910b9e864f58cc83ce929879525fc'
          'SKIP')
 
 
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/calamares/build
+	cd ${srcdir}/calamares-2.2.3/build
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
