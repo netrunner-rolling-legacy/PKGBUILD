@@ -1,5 +1,5 @@
 pkgname=calamares
-pkgver=2.2.3
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Distribution-independent installer framework (development version)'
 arch=('i686' 'x86_64')
@@ -16,20 +16,20 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
-source=("https://github.com/calamares/calamares/releases/download/v2.2.3/calamares-2.2.3.tar.gz"
-        'git+https://github.com/netrunner-rolling/calamares-netrunner-rolling#branch=2.2.x-stable')
+source=(git+https://github.com/calamares/calamares.git#branch=2.2.x-stable
+        git+https://github.com/netrunner-rolling/calamares-netrunner-rolling#branch=2.2.x-stable)
 
-sha1sums=('de89ec513a3910b9e864f58cc83ce929879525fc'
+sha1sums=('SKIP'
          'SKIP')
 
 
 prepare() {
-		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares-2.2.3"
-		rm -rf "$srcdir/calamares-2.2.3/.git"
+		cp -a "$srcdir/calamares-netrunner-rolling/." "$srcdir/calamares"
+		rm -rf "$srcdir/calamares/.git"
 }
 
 build() {
-	cd ${srcdir}/calamares-2.2.3
+	cd ${srcdir}/calamares
 	mkdir -p build
 	cd build
         cmake .. \
