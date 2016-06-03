@@ -9,7 +9,7 @@ depends=('baloo' 'ki18n' 'kio' 'kconfigwidgets' 'kcoreaddons' 'kxmlgui' 'qt5-bas
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
-source=('git://github.com/netrunner-extras/kcm-plasma-services#branch=netrunner18')
+source=('git://github.com/netrunner-extras/kcm-plasma-services')
 md5sums=('SKIP')
 
 prepare() {
