@@ -13,8 +13,8 @@ source=('git://github.com/netrunner-extras/kcm-about-extended'
         'netrunner-rolling-logo.svg'
         'kcm-about-extendedrc')
 md5sums=('SKIP'
-         '87acbf6fcef86f1b63bced51ac436935'
-         '3119544d80ae4a9d215451527d50c6bc')
+         'cd6c97760883ccf780e0bbdd926fbb01'
+         '87acbf6fcef86f1b63bced51ac436935')
 
 prepare() {
   mkdir -p build
